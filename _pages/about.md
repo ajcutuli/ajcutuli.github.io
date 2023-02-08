@@ -14,7 +14,7 @@ redirect_from:
 **Hello there!**
 ---
 
-I'm currently a M.S. student of Financial Engineering at **Columbia University**. I received a B.S. in Mathematics and Economics with a Specialization in Computing from UCLA in 2022.
+I'm currently a M.S. student of Financial Engineering at Columbia University. I received a B.S. in Mathematics and Economics with a Specialization in Computing from UCLA in 2022.
 
 
 
