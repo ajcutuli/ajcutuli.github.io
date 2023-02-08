@@ -3,7 +3,7 @@ permalink: /
 title: ""
 excerpt: "About me"
 header:
-   overlay_image: "http://ajcutuli.github.io/images/columbia.jpg"
+   overlay_image: "http://ajcutuli.github.io/images/newyork.jpg"
    overlay_filter: 0.0
 author_profile: true
 redirect_from: 
