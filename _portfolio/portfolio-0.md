@@ -1,6 +1,6 @@
 ---
 title: "Trading in the limit order book with CNN-LSTM alpha"
-excerpt: "Hybrid deep learning model for limit order book forecasting<br/>"
+excerpt: "I dedicated free time in the first half of 2022 towards teaching myself concepts in deep learning and time series analysis through a hands-on project"
 collection: portfolio
 ---
 
