@@ -27,5 +27,5 @@ Probabilistic modeling, Decision making under uncertainty, Alternatives to deep 
 **General Interests**
 ---
 
-[Cinema](https://letterboxd.com/ajcutuli/), rock climbing, basketball, fitness, [log rolling](https://www.instagram.com/stories/highlights/18080647642303348/)
+[Cinema](https://letterboxd.com/ajcutuli/), rock climbing, basketball, volleyball, fitness, [log rolling](https://www.instagram.com/stories/highlights/18080647642303348/)
 
