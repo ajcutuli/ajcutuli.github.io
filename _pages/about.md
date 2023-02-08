@@ -14,20 +14,20 @@ redirect_from:
 **Hello there!**
 ---
 
-I'm studying Applied Statistics & Data Science at **Columbia University** (M.A. in QMSS). I have a background in **Mathematics** and Financial Economics
+I'm currently a M.S. student of Financial Engineering at **Columbia University**. I received a B.S. in Mathematics and Economics with a Specialization in Computing from UCLA in 2022.
 
 
 
 **Academic Interests**
 ---
-Applied Mathematics, Reinforcement Learning
+Probabilistic modeling, Decision making under uncertainty, Alternatives to deep learning
 
 
 
-**General Interests**
+**"Less Nerdy" Pasttimes**
 ---
 
-Arthouse Cinema, Jazz Guitar, Indie Music, Running, Modern American Literature, Anime & Manga _+ whatever Kevin Feige is cooking with the MCU_
+Film appreciation, rock climbing, basketball, fitness, log rolling
 
 
 
