@@ -9,7 +9,7 @@
 locale                   : "en-US"
 title                    : "Aric Cutuli"
 title_separator          : "-"
-name                     : &name "Emile Esmaili"
+name                     : &name "Aric Cutuli"
 description              : &description "Data Science"
 url                      : https://ajcutuli.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
