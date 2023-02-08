@@ -3,7 +3,7 @@ permalink: /
 title: ""
 excerpt: "About me"
 header:
-   overlay_image: "http://ajcutuli.github.io/images/2001.jpg"
+   overlay_image: "http://ajcutuli.github.io/images/1024px-Columbia-pano.jpg"
    overlay_filter: 0.0
 author_profile: true
 redirect_from: 
@@ -27,7 +27,7 @@ Probabilistic modeling, Decision making under uncertainty, Alternatives to deep 
 **General Interests**
 ---
 
-Film appreciation, rock climbing, basketball, fitness, log rolling
+Film appreciation (Proud AMC A-List and [Letterboxd](https://letterboxd.com/ajcutuli/) member), rock climbing, basketball, fitness, log rolling (check the [highlights](https://www.instagram.com/stories/highlights/18080647642303348/))
 
 
 
