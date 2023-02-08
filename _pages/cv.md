@@ -9,34 +9,30 @@ redirect_from:
 
 {% include base_path %}
 
-Download my full CV [here](https://emileDesmaili.github.io/files/CV.pdf)
-
+Download my full CV [here](https://ajcutuli.github.io/files/CV.pdf)
 
 ## Education
 
-* M.A. in Applied Statistics & Data Science (QMSS), Columbia University, _in progress_
-* B.S. in Mathematics, Sorbonne Université, _in progress_
-* M.S. in Financial Engineering, PSL Research University
-* B.S. in Economics, PSL Research University
+* M.S. in Financial Engineering, Columbia University, _in progress_
+* B.S. in Mathematics/Economics with Specialization in Computing, UCLA
 
 
-## Research & Work Experience
+## Work Experience
 
-* 2022-2023: **Research Intern** - NASA Goddard Institute for Spaces Studies
-* 2021-2022: **Data Scientist** - Ekimetrics
-* 2020-2021: **Quantitative Strategist Intern - FX Research** - Natixis
+* 2022: **Quantitative Analyst - ML Engineering** - Citigroup
+* 2022: **Quantitative Developer** - Vicarisi Ventures
+* 2021: **Data Analyst - Fiduciary Quality Assurance** - Edelman Financial Engines
 
+## Research Experience
 
+* 2023: **Research Assistant** - Columbia University, Department of Earth & Environmental Engineering
+* 2021: **Directed Reading Program** - UCLA, Department of Mathematics
 
 ## Teaching Experience
-* Spring 2023: Teaching Assistant for GR5074: Advanced Projects in Machine Learning - Columbia University
+* Spring 2023: Teaching Assistant for IEOR E4733: Algorithmic Trading - Columbia University
 
 
-## Skills
+## Technical Skills
 
-* **Programming Languages**: Python, R, MATLAB
-* **Frameworks**: PyTorch, Keras, Scikit-learn, PyMC, CVX, Git, Gym (OpenAI)
-* **Natural Languages**: French, English, Farsi, German
-
-
-
+* **Languages**: Python, Go, C++
+* **Other Software**: Excel, Jira, LaTex

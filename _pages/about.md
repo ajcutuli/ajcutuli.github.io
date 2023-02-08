@@ -24,7 +24,7 @@ Probabilistic modeling, Decision making under uncertainty, Alternatives to deep 
 
 
 
-**"Less Nerdy" Pasttimes**
+**General Interests**
 ---
 
 Film appreciation, rock climbing, basketball, fitness, log rolling
