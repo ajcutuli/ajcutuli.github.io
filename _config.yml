@@ -7,13 +7,13 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Emile Esmaili"
+title                    : "Aric Cutuli"
 title_separator          : "-"
-name                     : &name "Emile Esmaili"
+name                     : &name "Aric Cutuli"
 description              : &description "Data Science"
-url                      : https://emiledesmaili.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://ajcutuli.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "emiledesmaili/emiledesmaili.github.io"
+repository               : "ajcutuli/ajcutuli.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
@@ -80,9 +80,9 @@ analytics:
 
 # Site Author
 author:
-  name             : "Emile Esmaili"
+  name             : "Aric Cutuli"
   avatar           : "photolea_git.jpg"
-  bio              : "Graduate student in Applied Statistics & Data Science at Columbia University. "
+  bio              : "Graduate student in Financial Engineering at Columbia University. "
   location         : "New York City, NY"
   employer         :
   pubmed           : 
@@ -96,13 +96,13 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "emileDesmaili"
+  github           : "ajcutuli"
   google_plus      :
   keybase          :
-  instagram        : "emileesmaili3"
+  instagram        : "ajcutuli"
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         : "emile-esmaili-87a14514a/"
+  linkedin         : "ariccutuli/"
   orcid            : 
   pinterest        :
   soundcloud       :
