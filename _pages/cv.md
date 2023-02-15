@@ -21,12 +21,12 @@ Download my full CV [here](https://ajcutuli.github.io/files/Aric_Cutuli_CV.pdf)
 
 * Summer 2022: **Quantitative Analyst - ML Engineering** - Citigroup
 * Spring 2022: **Quantitative Developer** - Vicarisi Ventures
-* Summer 2021: **Data Analyst - Fiduciary Quality Assurance** - Edelman Financial Engines
+* Summer 2021: **Data Analyst** - Edelman Financial Engines
 
 ## Research Experience
 
-* Spring 2023: **Research Assistant - Probabilistic Modeling** - Columbia University, Columbia Climate School
-* Winter 2022: **Research Assistant - Decentralized Finance** - AbleMarkets
+* Spring 2023: **Research Assistant** - Columbia University
+* Winter 2022: **Research Assistant** - AbleMarkets
 * Fall 2021: **Directed Reading Program Mentee** - UCLA, Department of Mathematics
 
 ## Teaching Experience
