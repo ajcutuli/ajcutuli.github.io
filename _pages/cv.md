@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-Download my full CV [here](https://ajcutuli.github.io/files/CV.pdf)
+Download my full CV [here](https://ajcutuli.github.io/files/Aric_Cutuli_CV.pdf)
 
 ## Education
 
@@ -19,14 +19,15 @@ Download my full CV [here](https://ajcutuli.github.io/files/CV.pdf)
 
 ## Work Experience
 
-* 2022: **Quantitative Analyst - ML Engineering** - Citigroup
-* 2022: **Quantitative Developer** - Vicarisi Ventures
-* 2021: **Data Analyst - Fiduciary Quality Assurance** - Edelman Financial Engines
+* Summer 2022: **Quantitative Analyst - ML Engineering** - Citigroup
+* Spring 2022: **Quantitative Developer** - Vicarisi Ventures
+* Summer 2021: **Data Analyst - Fiduciary Quality Assurance** - Edelman Financial Engines
 
 ## Research Experience
 
-* 2023: **Research Assistant** - Columbia University, Department of Earth & Environmental Engineering
-* 2021: **Directed Reading Program** - UCLA, Department of Mathematics
+* Spring 2023: **Research Assistant - Probabilistic Modeling** - Columbia University, Columbia Climate School
+* Winter 2022: **Research Assistant - Decentralized Finance** - AbleMarkets
+* Fall 2021: **Directed Reading Program Mentee** - UCLA, Department of Mathematics
 
 ## Teaching Experience
 * Spring 2023: Teaching Assistant for IEOR E4733: Algorithmic Trading - Columbia University
