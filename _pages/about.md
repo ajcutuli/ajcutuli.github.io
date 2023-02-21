@@ -13,19 +13,13 @@ redirect_from:
 
 **Hello there!**
 ---
-
 I'm currently a M.S. student of Financial Engineering at Columbia University. I received a B.S. in Mathematics and Economics with a Specialization in Computing from UCLA in 2022.
-
-
 
 **Academic Interests**
 ---
 Probabilistic modeling, Decision making under uncertainty, Alternatives to deep learning, Decentralized finance
 
-
-
 **General Interests**
 ---
-
 [Cinema](https://letterboxd.com/ajcutuli/), rock climbing, basketball, volleyball, fitness, [log rolling](https://www.instagram.com/stories/highlights/18080647642303348/)
 
