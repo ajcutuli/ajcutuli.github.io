@@ -17,7 +17,7 @@ I'm currently a M.S. student of Financial Engineering at Columbia University. I 
 
 **Academic Interests**
 ---
-Probabilistic modeling, Decision making under uncertainty, Alternatives to deep learning, Decentralized finance
+Probabilistic modeling, Decision making under uncertainty, Alternatives to deep learning
 
 **General Interests**
 ---
