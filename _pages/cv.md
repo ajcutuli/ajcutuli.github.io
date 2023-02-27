@@ -27,7 +27,3 @@ Download my full CV [here](https://ajcutuli.github.io/files/Aric_Cutuli_CV.pdf)
 
 ## Teaching Experience
 * Spring 2023: Teaching Assistant for IEOR E4733: Algorithmic Trading - Columbia University
-
-## Technical Skills
-* **Languages**: Python, Go, C++
-* **Other Software**: Excel, Jira, LaTex
