@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-Download my full CV [here](https://ajcutuli.github.io/files/Aric_Cutuli_CV.pdf)
+<!-- Download my full CV [here](https://ajcutuli.github.io/files/Aric_Cutuli_CV.pdf) -->
 
 ## Education
 * M.S. in Financial Engineering, Columbia University, _in progress_
@@ -26,4 +26,4 @@ Download my full CV [here](https://ajcutuli.github.io/files/Aric_Cutuli_CV.pdf)
 * Fall 2021: **Directed Reading Program Mentee** - UCLA, Department of Mathematics
 
 ## Teaching Experience
-* Spring 2023: Teaching Assistant for IEOR E4733: Algorithmic Trading - Columbia University
+* Spring 2023: Teaching Assistant, IEOR E4733: Algorithmic Trading - Columbia University
