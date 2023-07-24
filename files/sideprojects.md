@@ -1,11 +1,10 @@
 ---
 layout: archive
-title: "Teaching"
-permalink: /teaching/
+title: "Side Projects"
+permalink: /sideprojects/
 author_profile: true
 ---
 
 {% include base_path %}
 
-### Teaching Assistant
-* [IEOR 4733: Algorithmic Trading](http://www.columbia.edu/cu/bulletin/uwb/#subj/IEOR/E4733-20231-001/) - Spring 2023
+A small portfolio of personal projects I've created.
