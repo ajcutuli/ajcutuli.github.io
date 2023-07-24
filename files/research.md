@@ -1,29 +1,18 @@
 ---
 layout: archive
-title: "Resume"
-permalink: /cv/
+title: "Research"
+permalink: /research/
 author_profile: true
-redirect_from:
-  - /resume
+# redirect_from:
+#   - /resume
 ---
 
 {% include base_path %}
 
-<!-- Download my full CV [here](https://ajcutuli.github.io/files/Aric_Cutuli_CV.pdf) -->
+## Publications
+### In Prep
+[1] A Bayesian Hierarchical Framework for Modeling Migration Flows. **Aric Cutuli**, Upmanu Lall, Michael Puma, Emile Esmaili, Rachata Muneepeerakul. 2023.
 
-## Education
-* M.S. in Financial Engineering, Columbia University, _in progress_
-* B.S. in Mathematics/Economics with Specialization in Computing, UCLA
-
-## Work Experience
-* Summer 2022: **Quantitative Summer Analyst - ML Engineering** - Citigroup
-* Spring 2022: **Quantitative Developer** - Vicarisi Ventures
-* Summer 2021: **Data Analyst Intern** - Edelman Financial Engines
-
-## Research Experience
-* Spring 2023: **Research Assistant** - Columbia University
-* Winter 2022: **Research Assistant** - AbleMarkets
-* Fall 2021: **Directed Reading Program Mentee** - UCLA, Department of Mathematics
-
-## Teaching Experience
-* Spring 2023: Teaching Assistant, IEOR E4733: Algorithmic Trading - Columbia University
+### Technical Reports
+[1] Hawkes Processes and Time Clustering in Finance. **Aric Cutuli**. 2023.
+[2] Separation Capacity of Randomly Initialized DNNs. **Aric Cutuli**, Harold Haodong Miao, Weitao Zhu. 2023.
