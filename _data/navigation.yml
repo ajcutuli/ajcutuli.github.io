@@ -5,6 +5,8 @@ main:
   #   url: /cv/
   - title: "Research"
     url: /research/
+  - title: "Side Projects"
+    url: /sideprojects/
   - title: "Teaching"
     url: /teaching/
   - title: "Movie Talk"

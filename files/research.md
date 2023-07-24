@@ -14,5 +14,6 @@ author_profile: true
 [1] A Bayesian Hierarchical Framework for Modeling Migration Flows. **Aric Cutuli**, Upmanu Lall, Michael Puma, Emile Esmaili, Rachata Muneepeerakul. 2023.
 
 ### Technical Reports
-[1] Hawkes Processes and Time Clustering in Finance. **Aric Cutuli**. 2023.
-[2] Separation Capacity of Randomly Initialized DNNs. **Aric Cutuli**, Harold Haodong Miao, Weitao Zhu. 2023.
+[1] [Hawkes Processes and Time Clustering in Finance.](Hawkes_Processes.pdf) **Aric Cutuli**. 2023.
+
+[2] [Separation Capacity of Randomly Initialized DNNs.](Separation_Capacity.pdf) **Aric Cutuli**, Harold Haodong Miao, Weitao Zhu. 2023.
