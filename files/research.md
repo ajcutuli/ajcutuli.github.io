@@ -9,7 +9,6 @@ author_profile: true
 
 {% include base_path %}
 
-## Publications
 ### In Prep
 [1] A Bayesian Hierarchical Framework for Modeling Migration Flows. **Aric Cutuli**, Upmanu Lall, Michael Puma, Emile Esmaili, Rachata Muneepeerakul. 2023.
 
