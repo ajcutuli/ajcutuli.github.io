@@ -13,13 +13,10 @@ redirect_from:
 
 **Hello there!**
 ---
-I'm currently a M.S. student of Financial Engineering at Columbia University. I received a B.S. in Mathematics and Economics with a Specialization in Computing from UCLA in 2022.
+My name is Aric. I'm currently a Masters student of Financial Engineering at Columbia University, where I concentrate in applied machine learning. At the Columbia Climate School, I am conducting research under the supervision of Prof. Upmanu Lall and Dr. Michael Puma on applying Bayesian methods to model human migration flows and shed light onto the various push and pull factors that influence migration decisions.
 
-**Academic Interests**
----
-Probabilistic modeling, Decision making under uncertainty
+My background is quite multidisplinary. Financial engineering is a combination of mathematics, statistics, computer science, and financial theory, and as an undergraduate student at the University of California, Los Angeles, I majored in Mathematics and Economics and earned a Specialization in Computing for additional computer science oriented coursework I pursued.
 
-**General Interests**
----
-Cinema, rock climbing, basketball, volleyball, fitness, log rolling
+I've spent the past two summers as an Quantitative Analysis intern at Citigroup Global Markets. This summer, I rotated on the Equities Central Risk desk, where my focus was on improving a portion of their systematic order filtering system. In 2022, I worked in the AI Innovation Lab, fine-tuning Google's BERT language model to classify news alerts in the context of commodities markets.
 
+Here is my full [CV](Aric_Cutuli_CV.pdf).
