@@ -1,10 +1,11 @@
 # main links links
 main:
 
-  - title: "Resume"
-    url: /cv/
-  - title: "Side Projects"
+  # - title: "Resume"
+  #   url: /cv/
+  - title: "Research"
     url: /portfolio/
+  
   - title: "Movie Talk"
     url: /movies/
 
