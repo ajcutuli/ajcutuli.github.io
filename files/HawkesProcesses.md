@@ -1,5 +1,9 @@
-
-# Hawkes Processes and Time Clustering in Finance
+---
+layout: archive
+permalink: /blog/HawkesProcesses
+title: "Hawkes Processes and Time Clustering in Finance"
+author_profile: true
+---
 
 ## Introduction
 
