@@ -14,3 +14,4 @@ Published June 12th, 2023
 # 2022
 ## [Trading in the Limit Order Book with CNN-LSTM](/files/CNN_LSTM_LOB.ipynb)
 Published July 18th, 2022
+
