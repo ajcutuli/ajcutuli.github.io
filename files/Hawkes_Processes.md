@@ -1,6 +1,6 @@
 ---
 layout: archive
-permalink: /Hawkes/
+permalink: /blog/Hawkes/
 author_profile: false
 ---
 
