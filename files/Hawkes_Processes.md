@@ -1,7 +1,7 @@
 ---
 layout: archive
 permalink: /Hawkes/
-author_profile: true
+author_profile: false
 ---
 
 <embed src="/Hawkes_Processes.pdf" type="application/pdf">
