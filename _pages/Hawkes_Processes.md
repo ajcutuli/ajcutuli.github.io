@@ -3,6 +3,8 @@ layout: archive
 permalink: /blog/Hawkes/
 author_profile: true
 title: "Hawkes Processes and Time Clustering in Finance"
+redirect_from:
+  - /_pages/Hawkes_Processes.md
 ---
 
 {% include base_path %}
