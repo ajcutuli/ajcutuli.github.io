@@ -8,7 +8,7 @@ author_profile: true
 {% include base_path %}
 
 ## 2023
-### [Hawkes Processes and Time Clustering in Finance]({% site.url %}{% post_link Hawkes_processes %})
+### [Hawkes Processes and Time Clustering in Finance](/_posts/Hawkes_Processes.md)
 TL;DR on Hawkes processes, a class of self-exciting point processes that have applications in finance<br>
 *Published June 12th, 2023*
 
