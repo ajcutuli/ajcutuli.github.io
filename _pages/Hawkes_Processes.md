@@ -107,7 +107,9 @@ $$
 Evaluating this expression computationally is an $O(N^2)$ operation, but $Z_i$ can be written as a recursion such that the problem is reduced to $O(N)$. Namely, recognizing
 
 $$
-Z_i = e^{-w(t_i-t_{i-1})}\sum_{k=1}^{i-1} e^{-w(t_{i-1}-t_k)} = (1+Z_{i-1})e^{-w(t_i-t_{i-1})}
+\begin{align*}
+    Z_i = e^{-w(t_i-t_{i-1})}\sum_{k=1}^{i-1} e^{-w(t_{i-1}-t_k)} = (1+Z_{i-1})e^{-w(t_i-t_{i-1})}
+\end{align*}
 $$
 
 allows for the log likelihood and its gradients to be efficiently computed in order to find the MLE for $\pmb{\theta}$.
