@@ -9,7 +9,7 @@ title: "Hawkes Processes and Time Clustering in Finance"
 
 ## Introduction
 
-On May 6, 2010, U.S. equity markets experienced a then unprecedented intraday price drop and recovery in what would come to be known as the 2010 Flash Crash. Within the five minutes following 2:32 pm EDT, a multi-trillion dollar pullback left the Dow Jones Industrial Average nearly 10\% below its opening price for the day. The swift and dramatic drop triggered a half hour of such intense trading volume and market recovery that a 2014 CFTC report would call it “one of the most turbulent periods” in the history of U.S. financial markets\cite{CFTC-Flash-Crash}. On October 15, 2014, the U.S. Treasury market experienced a similarly drastic excitement\cite{UST-Flash}, and on October 7, 2016, the sterling took a 9\% dive against the dollar in Asian markets before recovering most of the loss within minutes\cite{Sterling-Flash}. These flash events are a byproduct of modernizing electronic markets, and few traditional models of financial processes account for such acute feedback effects. In recent years, however, the Hawkes process has been used to trace these observed phenomena.
+On May 6, 2010, U.S. equity markets experienced a then unprecedented intraday price drop and recovery in what would come to be known as the 2010 Flash Crash. Within the five minutes following 2:32 pm EDT, a multi-trillion dollar pullback left the Dow Jones Industrial Average nearly 10\% below its opening price for the day. The swift and dramatic drop triggered a half hour of such intense trading volume and market recovery that a 2014 CFTC report would call it “one of the most turbulent periods” in the history of U.S. financial markets[<sub>[1]</sub>](#ref1). On October 15, 2014, the U.S. Treasury market experienced a similarly drastic excitement\cite{UST-Flash}, and on October 7, 2016, the sterling took a 9\% dive against the dollar in Asian markets before recovering most of the loss within minutes\cite{Sterling-Flash}. These flash events are a byproduct of modernizing electronic markets, and few traditional models of financial processes account for such acute feedback effects. In recent years, however, the Hawkes process has been used to trace these observed phenomena.
 
 $$
 \begin{align}
@@ -127,5 +127,7 @@ A brief list of Hawkes representations used in finance includes models of market
 In practice, such phenomena exhibit high endogeneity (i.e. $g$ close to 1), suggesting that current markets operate in a close to unstable system (hence the propensity for flash crashes) and/or that Hawkes processes are too simple a framework to model financial markets. The linear Hawkes process that we discussed have been extended by introducing covariates such as price returns\cite{cojumps-hawkes-factor} and news\cite{Rambaldi2014ModelingFE} to improve the ability the explain phenomena. As a financial modeler, it is critical to constantly bear in mind that, as put best in Derman and Wilmott's manifesto\cite{manifesto}, "models are not the world."
 
 ## References
+1. <span id="ref1">A. Kirilenko, A. S. Kyle, M. Samadi, and T. Tuzun. The flash crash: High-frequency trading in an electronic market. *The Journal of Finance*, 72(3):967–998, 2017.<br>
+2. 
 
 
