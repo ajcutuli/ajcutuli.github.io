@@ -1,6 +1,6 @@
 ---
 layout: archive
-permalink: /blog/Hawkes/
+permalink: /Hawkes/
 author_profile: true
 title: "Hawkes Processes and Time Clustering in Finance"
 ---
