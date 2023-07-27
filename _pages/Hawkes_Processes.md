@@ -26,7 +26,9 @@ Empirically calibrating the Hawkes process in financial applications consists of
 Calendar time can be re-parameterized as business time by measuring the the intra-day activity pattern $\bar \lambda(t)$ as the average activity at time $t$ over many days and subsequently defining
 
 $$
-\hat t(t) = \int_0^t \bar \lambda(s)\text{d}s.
+\begin{align*}
+    \hat t(t) = \int_0^t \bar \lambda(s)\text{d}s.
+\end{align*}
 $$
 
 Doing so allows for the re-parameterized activity to appear stationary i.e. $\lambda_0(t) = \lambda_0$.
@@ -57,12 +59,14 @@ $$
 Here, 
 
 $$
-\lambda(t_i|\pmb{\theta}) e^{-\int_{t_{i-1}}^{t_i} \lambda(s|\pmb{\theta})\text{d}s} \text{d}t
+\begin{align*}
+    \lambda(t_i|\pmb{\theta}) e^{-\int_{t_{i-1}}^{t_i} \lambda(s|\pmb{\theta})\text{d}s} \text{d}t
+\end{align*}
 $$
 
-is the probability of an arrival coming in $[t_i,t_i+\text{d}t)$ and not in $(t_{i-1},t_i)$, which is a definition of inhomogeneous Poisson processes. It is important here to note that while a closed-form solution to $\pmb{\theta}$ would offer nice statistical properties, it is often not attainable in practice unless we assume that the kernel function has a certain parametric form. If this assumption is omitted, it is best to estimate (1.1) via numerical optimization or algorithmically\cite{em-hawkes}. However, imposing, for example, that $v$ is of exponential form (i.e. $v(t) = gwe^{-wt}$) allows for the direct computation of the maximum likelihood estimator for $\pmb{\theta}$.
+is the probability of an arrival coming in $[t_i,t_i+\text{d}t)$ and not in $(t_{i-1},t_i)$, which is a definition of inhomogeneous Poisson processes. It is important here to note that while a closed-form solution to $\pmb{\theta}$ would offer nice statistical properties, it is often not attainable in practice unless we assume that the kernel function has a certain parametric form. If this assumption is omitted, it is best to estimate (1) via numerical optimization or algorithmically\cite{em-hawkes}. However, imposing, for example, that $v$ is of exponential form (i.e. $v(t) = gwe^{-wt}$) allows for the direct computation of the maximum likelihood estimator for $\pmb{\theta}$.
 
-With this exponential kernel, the parameter vector is $\pmb{\theta} = (\lambda_0,w,g)$, where $w^{-1}$ determines the time at which events stop exciting the process and $g=\int_0^{\infty} v(s) \text{d}s$ is the norm or branching ratio i.e. the expected number of child events that a parent event produces. A larger $g$ implies that a large fraction of events come in response to past events i.e. the activity is highly endogeneous. The stochastic differential equation governing the process can be derived by taking the differential on either side of (1.1):
+With this exponential kernel, the parameter vector is $\pmb{\theta} = (\lambda_0,w,g)$, where $w^{-1}$ determines the time at which events stop exciting the process and $g=\int_0^{\infty} v(s) \text{d}s$ is the norm or branching ratio i.e. the expected number of child events that a parent event produces. A larger $g$ implies that a large fraction of events come in response to past events i.e. the activity is highly endogeneous. The stochastic differential equation governing the process can be derived by taking the differential on either side of (1):
 
 $$
 \begin{align*}
@@ -76,7 +80,7 @@ $$
 
 This essentially describes the intensity $\lambda(t)$ as decaying exponentially toward $\lambda_0$ but being excited by an amount $gw$ when an event occurs.
 
-The exponential Hawkes is Markovian in nature, and, given arrival times $t_1,t_2,...,t_N$ in $(0,T]$, this enables (1.1) to be discretized to
+The exponential Hawkes is Markovian in nature, and, given arrival times $t_1,t_2,...,t_N$ in $(0,T]$, this enables (1) to be discretized to
 
 $$
 \begin{align*}
@@ -86,7 +90,7 @@ $$
 \end{align*}
 $$
 
-Letting $Z_i=\sum_{k=1}^{i-1} e^{-w(t_i-t_k)}$, (2.1) can be simplified to
+Letting $Z_i=\sum_{k=1}^{i-1} e^{-w(t_i-t_k)}$, (2) can be simplified to
 
 $$
 \begin{align*}
@@ -120,7 +124,6 @@ A brief list of Hawkes representations used in finance includes models of market
 
 In practice, such phenomena exhibit high endogeneity (i.e. $g$ close to 1), suggesting that current markets operate in a close to unstable system (hence the propensity for flash crashes) and/or that Hawkes processes are too simple a framework to model financial markets. The linear Hawkes process that we discussed have been extended by introducing covariates such as price returns\cite{cojumps-hawkes-factor} and news\cite{Rambaldi2014ModelingFE} to improve the ability the explain phenomena. As a financial modeler, it is critical to constantly bear in mind that, as put best in Derman and Wilmott's manifesto\cite{manifesto}, "models are not the world."
 
-\bibliographystyle{alpha}
-\bibliography{hawkes-biblio}
-\end{document}
+## References
+
 
