@@ -18,9 +18,6 @@ Using deep learning to extract order flow information from the limit order book 
 *Published July 18th, 2022*
 
 ## 2021
-### [Portfolio Allocation Across Global Equity Exchanges](https://github.com/ajcutuli/Index-Portfolio-Optimization/blob/main/Portfolio%20Optimization%20of%20Index%20Data.ipynb)
+### [Portfolio Allocation Across Global Equity Exchanges](/blog/Exchange-Portfolio/)
 Simple article on an application of modern portfolio theory toward stock index investment<br>
 *Published August 22nd, 2021*
-
-
-
