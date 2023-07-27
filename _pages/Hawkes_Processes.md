@@ -3,8 +3,6 @@ layout: archive
 permalink: /blog/Hawkes/
 author_profile: true
 title: "Hawkes Processes and Time Clustering in Finance"
-redirect_from:
-  - /_pages/Hawkes_Processes.md
 ---
 
 {% include base_path %}
@@ -12,11 +10,11 @@ redirect_from:
 ## Introduction
 
 On May 6, 2010, U.S. equity markets experienced a then unprecedented intraday price drop and recovery in what would come to be known as the 2010 Flash Crash. Within the five minutes following 2:32 pm EDT, a multi-trillion dollar pullback left the Dow Jones Industrial Average nearly 10\% below its opening price for the day. The swift and dramatic drop triggered a half hour of such intense trading volume and market recovery that a 2014 CFTC report would call it “one of the most turbulent periods” in the history of U.S. financial markets\cite{CFTC-Flash-Crash}. On October 15, 2014, the U.S. Treasury market experienced a similarly drastic excitement\cite{UST-Flash}, and on October 7, 2016, the sterling took a 9\% dive against the dollar in Asian markets before recovering most of the loss within minutes\cite{Sterling-Flash}. These flash events are a byproduct of modernizing electronic markets, and few traditional models of financial processes account for such acute feedback effects. In recent years, however, the Hawkes process has been used to trace these observed phenomena.
-$
+$$
 \begin{equation}
     \lambda (t) = \lambda_0 (t) + \int_{-\infty}^{t} v(t-s) \text{d}N(s)
 \end{equation}
-$
+$$
 Classically utilized for the modeling of earthquakes and their aftershocks\cite{hawkes-earthquake}, Hawkes processes are a class of Poisson point processes whose rate is characterized by an exogenous component capturing a latent arrival rate and an endogenous component capturing the realized rate’s dependency on past arrivals, which are recorded in the counting process $N(s)$. In particular, through the exogenous term $\lambda_0 (t)$, any non-stationarities in the underlying process can be accounted for, and the Hawkes kernel $v$ can be fit to explain the feedback effects that past arrivals have on the present rate. Hence, Hawkes processes offer flexible and interpretable characterizations of many complex phenomena in finance, including, but not limited to, the temporal clustering of trades, mid-price volatility, and credit default events\cite{hawkes-trades,Hawkes-Credit}. In this article, we outline calibration techniques for Hawkes processes and conclude with practical takeaways.
 
 ## Empirical Calibration
@@ -36,16 +34,16 @@ Given the process measured in business time, the Hawkes kernel can be estimated 
 Assuming that the kernel function $v(t)$ can be expressed in a parametric form with a parameter vector $\pmb{\theta}$, maximum likelihood estimation (MLE) can employed to estimate $\pmb{\theta}$ based on an observed realization of the point process. For $N$ events ocurring in $[0,T)$, the interval can be discretized into subintervals so that the likelihood function can be written as 
 $$
 \begin{align*}
-\mathbf{L}(t_1,t_2,...,t_N|\pmb{\theta})
-&= \left( \prod_{i=1}^N \lambda(t_i|\pmb{\theta}) e^{-\int_{t_{i-1}}^{t_i} \lambda(s|\pmb{\theta})\text{d}s}\right) e^{-\int_{t_{N}}^{T} \lambda(s|\pmb{\theta})\text{d}s}\\
-&= \left( \prod_{i=1}^N \lambda(t_i|\pmb{\theta})\right) e^{-\int_0^T \lambda(s|\pmb{\theta})\text{d}u} 
+    \mathbf{L}(t_1,t_2,...,t_N|\pmb{\theta})
+    &= \left( \prod_{i=1}^N \lambda(t_i|\pmb{\theta}) e^{-\int_{t_{i-1}}^{t_i} \lambda(s|\pmb{\theta})\text{d}s}\right) e^{-\int_{t_{N}}^{T} \lambda(s|\pmb{\theta})\text{d}s}\\
+    &= \left( \prod_{i=1}^N \lambda(t_i|\pmb{\theta})\right) e^{-\int_0^T \lambda(s|\pmb{\theta})\text{d}u} 
 \end{align*}
 $$
 and the log-likelihood as
 $
 \begin{equation}
-\log \mathbf{L}(t_1,t_2,...,t_N|\pmb{\theta}) 
-= \sum_{i=1}^N \log \lambda(t_i|\pmb{\theta}) - \int_0^T \lambda(s|\pmb{\theta})\text{d}s.
+    \log \mathbf{L}(t_1,t_2,...,t_N|\pmb{\theta}) 
+    = \sum_{i=1}^N \log \lambda(t_i|\pmb{\theta}) - \int_0^T \lambda(s|\pmb{\theta})\text{d}s.
 \end{equation}
 $
 Here, 
@@ -77,13 +75,13 @@ $$
 Letting $Z_i=\sum_{k=1}^{i-1} e^{-w(t_i-t_k)}$, (2.1) can be simplified to
 $$
 \begin{align*}
-\log \mathbf{L}(t_1,t_2,...,t_N|\pmb{\theta}) 
-&= \sum_{i=1}^N \log \lambda(t_i|\pmb{\theta}) - \int_0^T \lambda(s|\pmb{\theta})\text{d}s \\
-&= \sum_{i=1}^N \log (\lambda_0 + gwZ_i) - \int_0^T \left(\lambda_0 + gw \sum_{k=1}^{N(s)-1} e^{-w(t_{N(s)}-t_k)}\right)\text{d}t_{N(s)} \\
-&= \sum_{i=1}^N \log (\lambda_0 + gwZ_i) - \lambda_0T -\int_0^T gw \sum_{k=1}^{N(s)-1} e^{-w(t_{N(s)}-t_k)}\text{d}t_{N(s)} \\
-&= \sum_{i=1}^N \log (\lambda_0 + gwZ_i) - \lambda_0T - \sum_{i=1}^{N} g\int_{t_i}^T we^{-w(t_{N(s)}-t_i)}\text{d}t_{N(s)}\\
-&= \sum_{i=1}^N \log (\lambda_0 + gwZ_i) - \lambda_0T - \sum_{i=1}^{N} g(e^{-w(T-t_i)}-1) \\
-&= - \lambda_0T + \sum_{i=1}^N \left[\log (\lambda_0 + gwZ_i) - g(e^{-w(T-t_i)}-1)\right].
+    \log \mathbf{L}(t_1,t_2,...,t_N|\pmb{\theta}) 
+    &= \sum_{i=1}^N \log \lambda(t_i|\pmb{\theta}) - \int_0^T \lambda(s|\pmb{\theta})\text{d}s \\
+    &= \sum_{i=1}^N \log (\lambda_0 + gwZ_i) - \int_0^T \left(\lambda_0 + gw \sum_{k=1}^{N(s)-1} e^{-w(t_{N(s)}-t_k)}\right)\text{d}t_{N(s)} \\
+    &= \sum_{i=1}^N \log (\lambda_0 + gwZ_i) - \lambda_0T -\int_0^T gw \sum_{k=1}^{N(s)-1} e^{-w(t_{N(s)}-t_k)}\text{d}t_{N(s)} \\
+    &= \sum_{i=1}^N \log (\lambda_0 + gwZ_i) - \lambda_0T - \sum_{i=1}^{N} g\int_{t_i}^T we^{-w(t_{N(s)}-t_i)}\text{d}t_{N(s)}\\
+    &= \sum_{i=1}^N \log (\lambda_0 + gwZ_i) - \lambda_0T - \sum_{i=1}^{N} g(e^{-w(T-t_i)}-1) \\
+    &= - \lambda_0T + \sum_{i=1}^N \left[\log (\lambda_0 + gwZ_i) - g(e^{-w(T-t_i)}-1)\right].
 \end{align*}
 $$
 
