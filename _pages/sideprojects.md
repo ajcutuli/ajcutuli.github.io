@@ -14,7 +14,7 @@ TL;DR on Hawkes processes, a class of self-exciting point processes that have ap
 
 ## 2022
 ### [Trading in the Limit Order Book with CNN-LSTM](/blog/CNN-LSTM-LOB/)
-Article and code on using deep learning to extract order flow information from the limit order book and forecast directional moves<br>
+Using deep learning to extract order flow information from the limit order book and forecast directional moves<br>
 *Published July 18th, 2022*
 
 ## 2021
