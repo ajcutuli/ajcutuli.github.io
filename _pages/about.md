@@ -11,7 +11,7 @@ redirect_from:
   - /about.html 
 ---
 
-**Hello there!**
+**Hi!**
 ---
 My name is Aric. I'm currently a Masters student of Financial Engineering at Columbia University, where I concentrate in applied machine learning. At the Columbia Climate School, I am conducting research under the supervision of [Prof. Upmanu Lall](http://www.columbia.edu/~ula2/) and [Dr. Michael Puma](https://people.climate.columbia.edu/users/profile/michael-joseph-puma) on applying Bayesian methods to model human migration flows and shed light onto the various push and pull factors that influence migration decisions.
 
