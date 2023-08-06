@@ -21,7 +21,7 @@ Today's trading of equities and other securities is often facilitated by a [*lim
 
 An order is defined by its side, quantity demanded, price to trade at, and time of submission. As one enters the system, the matching engine of the exchange tries to match the order with existing orders in the book. Orders that match are executed and called *market orders*, and orders that do not match or only partially match are added to the book and called *limit orders*.
 
-![<img src='Images/Limit-order-book-diagram-A-new-buy-limit-order-arrives-at-price-bt-increasing-the.png' style='width:425px;height:312px'/>](https://www.researchgate.net/figure/Limit-order-book-diagram-A-new-buy-limit-order-arrives-at-price-bt-increasing-the_fig1_297725489)
+![](image-3.png)
 
 Our model takes as inputs representations of the first ten levels of the order book. A level is denoted by its price and volume that is bid or asked. So, as we progress down levels on the bid side of the order book, the price decreases, and as we progress down levels of the ask side, the price increases. Each observation in our dataset will be a 40-variable vector displaying the price and volume for each of the top ten bid and ask levels, giving us a truncated screenshot of the *state of the limit order book* at each timestep. 
 
@@ -76,7 +76,7 @@ $$
 
 where $ m $ is the number of LSTM units in the module, $ \sigma := (1+e^{-x})^{-1} $ is the sigmoid activation function, $ \text{f}_t \in \mathbb{R}^m $ is the forget gate's activation vector, $ \text{i}_t \in \mathbb{R}^m $ is the input gate's activation vector, $ \text{o}_t \in \mathbb{R}^m $ is the output gate's activation vector, $ \text{c}_t \in \mathbb{R}^m $ is the LSTM unit's hidden state vector, and $ \text{h}_t \in \mathbb{R}^m $ is the unit's output vector. $ \text{U} \in \mathbb{R}^{m \times n} $, $ \text{W} \in \mathbb{R}^{m \times m} $, and $ \text{b} \in \mathbb{R}^m $ are learned during training and represent the weight matrices in connection to the input vector, the weight matrices in connection to the previous output state, and the bias vectors, respectively. 
 
-![<img src='Images/lstm.png' style='width:500px;height:390px'/>](https://blog.mlreview.com/understanding-lstm-and-its-diagrams-37e2f46f1714)
+![](image-2.png)
 
 Moreover, Zhang et al[<sub>[2]</sub>](#ref2) showcase the performance benefit of applying [variational dropout](https://arxiv.org/pdf/1512.05287v5.pdf) to the model as a stochastic [regularizer](https://en.wikipedia.org/wiki/Regularization_(mathematics)) to reduce [overfitting](https://en.wikipedia.org/wiki/Overfitting) and make decisions with some understanding of the predictive variation produced by our model parameters. That is, with [*Monte-Carlo (MC) dropout*](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-quantifying-uncertainty/mc-dropout.html), we can add [epistemic uncertainty](https://en.wikipedia.org/wiki/Uncertainty_quantification#Aleatoric_and_epistemic)[<sup>1</sup>](#fn1) to our neural network architecture by making multiple out-of-sample predictions and dropping a different random sample of neurons with every forward pass. This random sampling leads to different predictions on each evaluation iteration, so we can average the results to––in theory––improve out-of-sample predictions. The dropout layer is inserted after the Inception Module, and we determine its rate with [cross-validated grid-search](https://scikit-learn.org/stable/modules/grid_search.html).
 
@@ -401,7 +401,7 @@ In order to assess the [bias-variance tradeoff](https://en.wikipedia.org/wiki/Bi
 
 In each time series, the ordering of data matters, so we can't apply the typical [$k$-fold cross-validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#k-fold_cross-validation) that is convention in cross-sectional models. Instead, a sliding or expanding training window must be used over multiple repetitions of out-of-sample predictions in order to find optimal hyperparameters.
 
-![<img src='Images/cross-val1.png' />](https://stackoverflow.com/questions/56601488/is-there-a-way-to-get-a-sliding-nested-cross-validation-using-sklearn)
+![](image-4.png)
 
 There are pros and cons to choosing either window type. For example, the expanding window includes more observations for training, but parameter confidence can lose interpretability due to the loss of sample size control[<sub>[5]</sub>](#ref5). Data permitting, the sliding window can offer sufficient training data in each repetition, but since we are in scarce supply, we choose to perform cross-validation with an expanding window.
 
@@ -517,7 +517,7 @@ As anticipated, our model trained on order flow outperforms the model trained on
 To test this hypothesis, we compare two trading strategies using our test set as the trading period. We ignore transaction costs and close positions at the end of the trading period. For each timestamp we trade at, we go long or short $\mu$ Bitcoins, where $\mu$ is 30% of the volume at the first ask or bid level we enter at, respectively[<sub>[2]</sub>](#ref2).
 
 ### Softmax Trading Strategy
-For this strategy, we choose a threshold probability $\alpha$ and go long if $ \hat{p}_{1,t}>\alpha$ and go short if $\hat{p}_{-1,t}>\alpha$, where $\hat{p}_{1,t}$ is the predicted probability of an upward move at time $ t$ and $ \hat{p}_{-1,t}$ is the predicted probability of a downward move at time $ t$. Only one position is allowed at any time. We store the cumulative profits and their ratios to transaction volume for a few threshold values.
+For this strategy, we choose a threshold probability $\alpha$ and go long if $ \hat{p}_{1,t}>\alpha $ and go short if $ \hat{p}_{-1,t}>\alpha $, where $ \hat{p}_{1,t} $ is the predicted probability of an upward move at time $ t $ and $ \hat{p}_{-1,t} $ is the predicted probability of a downward move at time $ t $. Only one position is allowed at any time. We store the cumulative profits and their ratios to transaction volume for a few threshold values.
 
 ```python
 alphas = [0.6,0.7,0.8]
@@ -596,9 +596,24 @@ $$
 \end{equation}
 $$
 
-Essentially, $j$ iterates over each class and summarizes the average level of uncertainty for outcomes of that class. The function is minimized when the model is certain––when one class has probability 1 and all others are 0. The function is maximized when the model is very uncertain––probability is uniform across the classes. Also observe that our earlier notation $\hat{p}_{j,t}$ is shorthand for $\frac{1}{100}\sum_{k=1}^{100} p(y_{t}=j|x_{t},\hat{w})$.
+Essentially, 
+$ j $ iterates over each class and summarizes the average level of uncertainty for outcomes of that class. The function is minimized when the model is certain––when one class has probability 1 and all others are 0. The function is maximized when the model is very uncertain––probability is uniform across the classes. Also observe that our earlier notation 
+$ \hat{p}_{j,t} $ is shorthand for 
+$ \frac{1}{100}\sum_{k=1}^{100} p(y_{t}=j|x_{t},\hat{w}) $.
 
-Using this metric, we upsize our positions if our model is certain and downsize our positions if the model is uncertain. More specifically, we still go long or short if $ \hat{p}_{1,t} > \alpha$ or $ \hat{p}_{-1,t} > \alpha$, respectively, but we upsize our positions to $1.5 \times \mu$ if $\tilde{\mathbb{H}}_t<\beta_1$, keep our size $\mu$ if $\beta_1< \tilde{\mathbb{H}}_t < \beta_2$, downsize to $0.5 \times \mu$ if $\tilde{\mathbb{H}}_t>\beta_2$, and exit the current position if $\tilde{\mathbb{H}}_t < \beta_2$[<sub>[2]</sub>](#ref2). We fix values for $\alpha$ and $\beta_2$ and test different values for $\beta_1$.
+Using this metric, we upsize our positions if our model is certain and downsize our positions if the model is uncertain. More specifically, we still go long or short if 
+$ \hat{p}_{1,t} > \alpha$ or 
+$ \hat{p}_{-1,t} > \alpha$, respectively, but we upsize our positions to 
+$ 1.5 \times \mu $ if 
+$ \tilde{\mathbb{H}}_t<\beta_1 $, keep our size 
+$\mu$ if 
+$ \beta_1< \tilde{\mathbb{H}}_t < \beta_2 $, downsize to 
+$0.5 \times \mu$ if 
+$ \tilde{\mathbb{H}}_t>\beta_2 $, and exit the current position if 
+$ \tilde{\mathbb{H}}_t < \beta_2 $[<sub>[2]</sub>](#ref2). We fix values for 
+$\alpha$ and 
+$\beta_2$ and test different values for 
+$\beta_1$.
 
 ```python
 threshold = 0.7
@@ -712,7 +727,10 @@ for time_series in model_details:
 ### Results
 Now comes the question of how we should compare these strategies in terms of profit and risk. 
 
-Since each strategy returns different transaction volumes, we standardize profits to properly compare profitability. And while the [Sharpe ratio](https://en.wikipedia.org/wiki/Sharpe_ratio) is a popular measure of risk in a portfolio or strategy, it deems large positive and negative returns to be equally risky, so we follow BDLOB[<sub>[2]</sub>](#ref2) in using the Downward Deviation ratio $ \text{DDR} = \frac{\mathbb{E}(R_t)}{\text{DD}_T}$ as our risk measure, where $ \mathbb{E}(R_t)$ is the average return per timestamp and $ \text{DD}_T = \sqrt{\frac{1}{T} \sum_{t=1}^T \text{min}(R_t,0)^2}$ measures the deviation of negative returns. DDR, which is essentially the [Sortino ratio](https://en.wikipedia.org/wiki/Sortino_ratio) with a target rate of 0, has the desired property of penalizing negative returns and rewarding positive returns.
+Since each strategy returns different transaction volumes, we standardize profits to properly compare profitability. And while the [Sharpe ratio](https://en.wikipedia.org/wiki/Sharpe_ratio) is a popular measure of risk in a portfolio or strategy, it deems large positive and negative returns to be equally risky, so we follow BDLOB[<sub>[2]</sub>](#ref2) in using the Downward Deviation ratio 
+$ \text{DDR} = \frac{\mathbb{E}(R_t)}{\text{DD}_T} $ as our risk measure, where 
+$ \mathbb{E}(R_t) $ is the average return per timestamp and 
+$ \text{DD}_T = \sqrt{\frac{1}{T} \sum_{t=1}^T \text{min}(R_t,0)^2}$ measures the deviation of negative returns. DDR, which is essentially the [Sortino ratio](https://en.wikipedia.org/wiki/Sortino_ratio) with a target rate of 0, has the desired property of penalizing negative returns and rewarding positive returns.
 
 ```python
 import matplotlib.pyplot as plt
@@ -790,11 +808,18 @@ To be in acccordance with the Box-Jenkins approach, we test the fitted models' r
 
 We compute our residuals as the [cross-entropy](https://en.wikipedia.org/wiki/Cross_entropy) of the classification problem at each timestamp, which we define by
 $$ \hat{u}_i=-\sum_{j=-1}^{1}y_i(j)\log\hat{y}_i(j) $$
-for $i \in \{1,...,T\}$, where $y_i$ is the [one-hot encoded](https://en.wikipedia.org/wiki/One-hot#Machine_learning_and_statistics) 3-variable vector of the true 1-step movement, $\hat{y}_i$ is our model's unrounded prediction of that encoding, and $T$ is the number of observations.
+for 
+$i \in \{1,...,T\}$, where 
+$y_i$ is the [one-hot encoded](https://en.wikipedia.org/wiki/One-hot#Machine_learning_and_statistics) 3-variable vector of the true 1-step movement, 
+$\hat{y}_i$ is our model's unrounded prediction of that encoding, and $T$ is the number of observations.
 
-Letting $\hat{\tau}_i$ be the sample autocorrelations of the residuals and $m$ to be a maximum lag to test, we use the Ljung-Box statistic
+Letting 
+$\hat{\tau}_i$ be the sample autocorrelations of the residuals and $m$ to be a maximum lag to test, we use the Ljung-Box statistic
 $$ Q(m) = T(T+2)\sum_{l=1}^{m}\frac{\hat{\tau}_l^2}{T-l} $$
-as our test statistic for the null hypothesis $H_0: \tau_1=...=\tau_m=0$ versus the alternative $H_a: \tau_i \neq 0$ for some $i \in \{1,...,m\} $. For large $T$, the statistic is [chi-squared distributed](https://en.wikipedia.org/wiki/Chi-squared_distribution) with $m$ degrees of freedom, and we reject the null in favor of the alternative if the test statistic is greater than the critical value of the corresponding chi-squared distribution at the 99% confidence level. 
+as our test statistic for the null hypothesis 
+$H_0: \tau_1=...=\tau_m=0$ versus the alternative 
+$H_a: \tau_i \neq 0$ for some 
+$i \in \{1,...,m\} $. For large $T$, the statistic is [chi-squared distributed](https://en.wikipedia.org/wiki/Chi-squared_distribution) with $m$ degrees of freedom, and we reject the null in favor of the alternative if the test statistic is greater than the critical value of the corresponding chi-squared distribution at the 99% confidence level. 
 
 ```python
 from statsmodels.stats.diagnostic import acorr_ljungbox
