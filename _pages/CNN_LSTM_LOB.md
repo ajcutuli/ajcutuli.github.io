@@ -21,7 +21,7 @@ Today's trading of equities and other securities is often facilitated by a [*lim
 
 An order is defined by its side, quantity demanded, price to trade at, and time of submission. As one enters the system, the matching engine of the exchange tries to match the order with existing orders in the book. Orders that match are executed and called *market orders*, and orders that do not match or only partially match are added to the book and called *limit orders*.
 
-![](image-3.png) {width=50%}
+![](image-3.png) {width=50}
 
 Our model takes as inputs representations of the first ten levels of the order book. A level is denoted by its price and volume that is bid or asked. So, as we progress down levels on the bid side of the order book, the price decreases, and as we progress down levels of the ask side, the price increases. Each observation in our dataset will be a 40-variable vector displaying the price and volume for each of the top ten bid and ask levels, giving us a truncated screenshot of the *state of the limit order book* at each timestep. 
 
@@ -76,7 +76,7 @@ $$
 
 where $ m $ is the number of LSTM units in the module, $ \sigma := (1+e^{-x})^{-1} $ is the sigmoid activation function, $ \text{f}_t \in \mathbb{R}^m $ is the forget gate's activation vector, $ \text{i}_t \in \mathbb{R}^m $ is the input gate's activation vector, $ \text{o}_t \in \mathbb{R}^m $ is the output gate's activation vector, $ \text{c}_t \in \mathbb{R}^m $ is the LSTM unit's hidden state vector, and $ \text{h}_t \in \mathbb{R}^m $ is the unit's output vector. $ \text{U} \in \mathbb{R}^{m \times n} $, $ \text{W} \in \mathbb{R}^{m \times m} $, and $ \text{b} \in \mathbb{R}^m $ are learned during training and represent the weight matrices in connection to the input vector, the weight matrices in connection to the previous output state, and the bias vectors, respectively. 
 
-![](image-2.png) {width=50%}
+![](image-2.png) {width=50}
 
 Moreover, Zhang et al[<sub>[2]</sub>](#ref2) showcase the performance benefit of applying [variational dropout](https://arxiv.org/pdf/1512.05287v5.pdf) to the model as a stochastic [regularizer](https://en.wikipedia.org/wiki/Regularization_(mathematics)) to reduce [overfitting](https://en.wikipedia.org/wiki/Overfitting) and make decisions with some understanding of the predictive variation produced by our model parameters. That is, with [*Monte-Carlo (MC) dropout*](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-quantifying-uncertainty/mc-dropout.html), we can add [epistemic uncertainty](https://en.wikipedia.org/wiki/Uncertainty_quantification#Aleatoric_and_epistemic)[<sup>1</sup>](#fn1) to our neural network architecture by making multiple out-of-sample predictions and dropping a different random sample of neurons with every forward pass. This random sampling leads to different predictions on each evaluation iteration, so we can average the results to––in theory––improve out-of-sample predictions. The dropout layer is inserted after the Inception Module, and we determine its rate with [cross-validated grid-search](https://scikit-learn.org/stable/modules/grid_search.html).
 
@@ -253,19 +253,23 @@ Now that we have our data, we seek to train the CNN-LSTM to accomplish the forec
 
 ### Vector Autoregressive Processes
 [*Vector autoregression*](https://en.wikipedia.org/wiki/Vector_autoregression) (VAR) is the multivariate extension of [*autoregression*](https://en.wikipedia.org/wiki/Autoregressive_model). That is, a VAR model is a statistical representation of a collection of time-varying [stochastic processes](https://en.wikipedia.org/wiki/Stochastic_process) that is prominent in the modeling of multivariate financial time series and other complex randomly-evolving processes. The term *autoregressive* indicates that each realization of the process is a linear function of previous values in the sequence plus a stochastic error term that is uncorrelated with those of other periods. That is, for a $ K$-variate time series 
-$ \left\{y_i\right\}_{i=1}^{t-1} $ in which we assume only 
+$ \{y_i\}_{i=1}^{t-1} $ in which we assume only 
 $ p $ past values are necessary to forecast the next observation 
 $ y_{t}$, we have the 
 VAR$(p)$ representation
 
 $$ y_{t}= c + A_1 y_t + A_2 y_{t-1} + ... + A_p y_{t-p} + u_{t}, $$
 
-where $ c = (c_1, ..., c_K)' $, $ A_i =  \begin{bmatrix}
-\alpha_{11,i} & \dots & \alpha_{1K,i} \\
-\vdots & \ddots & \vdots \\
-\alpha_{K1,i} & \dots & \alpha_{KK,i} \end{bmatrix} $
-, and 
-$ \left \{u_i \right\}_{i=1}^{t} = \left\{(u_{1i}, ..., u_{Ki})' \right\}_{i=1}^{t} \subset \mathbb{R}^K$ is independently identically distributed with mean zero. We do not assume that all 
+where $ c = (c_1, ..., c_K)' $
+, $ 
+A_i =  
+\begin{pmatrix}
+    \alpha_{11,i} & \dots & \alpha_{1K,i} \\
+    \vdots & \ddots & \vdots \\
+    \alpha_{K1,i} & \dots & \alpha_{KK,i} 
+\end{pmatrix} 
+$, and 
+$ \{u_i \}_{i=1}^{t} = \{(u_{1i}, ..., u_{Ki})' \}_{i=1}^{t} \subset \mathbb{R}^K$ is independently identically distributed with mean zero. We do not assume that all 
 $ A_i$ are nonzero, so 
 $ p$ really represents an upper bound on the order of the process[<sub>[5]</sub>](#ref5).
 
@@ -408,7 +412,7 @@ In order to assess the [bias-variance tradeoff](https://en.wikipedia.org/wiki/Bi
 
 In each time series, the ordering of data matters, so we can't apply the typical [$k$-fold cross-validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#k-fold_cross-validation) that is convention in cross-sectional models. Instead, a sliding or expanding training window must be used over multiple repetitions of out-of-sample predictions in order to find optimal hyperparameters.
 
-![](image-4.png) {width=50%}
+![](image-4.png) {width=50}
 
 There are pros and cons to choosing either window type. For example, the expanding window includes more observations for training, but parameter confidence can lose interpretability due to the loss of sample size control[<sub>[5]</sub>](#ref5). Data permitting, the sliding window can offer sufficient training data in each repetition, but since we are in scarce supply, we choose to perform cross-validation with an expanding window.
 
@@ -815,7 +819,7 @@ With access to more data, stress testing the model in different market regimes w
 Also, it may very well be the case that this model is very popular, and any potential profits have been arbitraged out.
 
 # Model Diagnostics
-To be in acccordance with the Box-Jenkins approach, we test the fitted models' residuals $\left\{\hat{u}_i\right\}_{i=1}^{T}$ for any [autocorrelation](https://en.wikipedia.org/wiki/Autocorrelation)—that is, we check whether residuals are correlated to past residuals in the sequence. If true, there is statistical evidence that the model is underfitting, and we should increase the lag parameter of our sequential model and re-train. If false, we accept the model residuals to be [white noise](https://en.wikipedia.org/wiki/White_noise). 
+To be in acccordance with the Box-Jenkins approach, we test the fitted models' residuals $\{\hat{u}_i\}_{i=1}^{T}$ for any [autocorrelation](https://en.wikipedia.org/wiki/Autocorrelation)—that is, we check whether residuals are correlated to past residuals in the sequence. If true, there is statistical evidence that the model is underfitting, and we should increase the lag parameter of our sequential model and re-train. If false, we accept the model residuals to be [white noise](https://en.wikipedia.org/wiki/White_noise). 
 
 We compute our residuals as the [cross-entropy](https://en.wikipedia.org/wiki/Cross_entropy) of the classification problem at each timestamp, which we define by
 $$ \hat{u}_i=-\sum_{j=-1}^{1}y_i(j)\log\hat{y}_i(j) $$
