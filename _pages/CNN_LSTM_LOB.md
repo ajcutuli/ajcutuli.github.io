@@ -21,7 +21,7 @@ Today's trading of equities and other securities is often facilitated by a [*lim
 
 An order is defined by its side, quantity demanded, price to trade at, and time of submission. As one enters the system, the matching engine of the exchange tries to match the order with existing orders in the book. Orders that match are executed and called *market orders*, and orders that do not match or only partially match are added to the book and called *limit orders*.
 
-[<img src='Images/Limit-order-book-diagram-A-new-buy-limit-order-arrives-at-price-bt-increasing-the.png' style='width:425px;height:312px'/>](https://www.researchgate.net/figure/Limit-order-book-diagram-A-new-buy-limit-order-arrives-at-price-bt-increasing-the_fig1_297725489)
+![<img src='Images/Limit-order-book-diagram-A-new-buy-limit-order-arrives-at-price-bt-increasing-the.png' style='width:425px;height:312px'/>](https://www.researchgate.net/figure/Limit-order-book-diagram-A-new-buy-limit-order-arrives-at-price-bt-increasing-the_fig1_297725489)
 
 Our model takes as inputs representations of the first ten levels of the order book. A level is denoted by its price and volume that is bid or asked. So, as we progress down levels on the bid side of the order book, the price decreases, and as we progress down levels of the ask side, the price increases. Each observation in our dataset will be a 40-variable vector displaying the price and volume for each of the top ten bid and ask levels, giving us a truncated screenshot of the *state of the limit order book* at each timestep. 
 
@@ -76,7 +76,7 @@ $$
 
 where $ m $ is the number of LSTM units in the module, $ \sigma := (1+e^{-x})^{-1} $ is the sigmoid activation function, $ \text{f}_t \in \mathbb{R}^m $ is the forget gate's activation vector, $ \text{i}_t \in \mathbb{R}^m $ is the input gate's activation vector, $ \text{o}_t \in \mathbb{R}^m $ is the output gate's activation vector, $ \text{c}_t \in \mathbb{R}^m $ is the LSTM unit's hidden state vector, and $ \text{h}_t \in \mathbb{R}^m $ is the unit's output vector. $ \text{U} \in \mathbb{R}^{m \times n} $, $ \text{W} \in \mathbb{R}^{m \times m} $, and $ \text{b} \in \mathbb{R}^m $ are learned during training and represent the weight matrices in connection to the input vector, the weight matrices in connection to the previous output state, and the bias vectors, respectively. 
 
-[<img src='Images/lstm.png' style='width:500px;height:390px'/>](https://blog.mlreview.com/understanding-lstm-and-its-diagrams-37e2f46f1714)
+![<img src='Images/lstm.png' style='width:500px;height:390px'/>](https://blog.mlreview.com/understanding-lstm-and-its-diagrams-37e2f46f1714)
 
 Moreover, Zhang et al[<sub>[2]</sub>](#ref2) showcase the performance benefit of applying [variational dropout](https://arxiv.org/pdf/1512.05287v5.pdf) to the model as a stochastic [regularizer](https://en.wikipedia.org/wiki/Regularization_(mathematics)) to reduce [overfitting](https://en.wikipedia.org/wiki/Overfitting) and make decisions with some understanding of the predictive variation produced by our model parameters. That is, with [*Monte-Carlo (MC) dropout*](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-quantifying-uncertainty/mc-dropout.html), we can add [epistemic uncertainty](https://en.wikipedia.org/wiki/Uncertainty_quantification#Aleatoric_and_epistemic)[<sup>1</sup>](#fn1) to our neural network architecture by making multiple out-of-sample predictions and dropping a different random sample of neurons with every forward pass. This random sampling leads to different predictions on each evaluation iteration, so we can average the results to––in theory––improve out-of-sample predictions. The dropout layer is inserted after the Inception Module, and we determine its rate with [cross-validated grid-search](https://scikit-learn.org/stable/modules/grid_search.html).
 
@@ -252,14 +252,15 @@ model_details['OFI']['data'] = ofi_data
 Now that we have our data, we seek to train the CNN-LSTM to accomplish the forecasting task of classifying future mid prices by their directional moves. In this section, we adopt the [Box-Jenkins approach](https://en.wikipedia.org/wiki/Box%E2%80%93Jenkins_method) to time series modeling by first taking a comically long-winded aside to recognize the time series as vector autoregressive (VAR) processes and then by tuning necessary hyperparameters of the deep learning model and evaluating the trained deep learning model.
 
 ### Vector Autoregressive Processes
-[*Vector autoregression*](https://en.wikipedia.org/wiki/Vector_autoregression) (VAR) is the multivariate extension of [*autoregression*](https://en.wikipedia.org/wiki/Autoregressive_model). That is, a VAR model is a statistical representation of a collection of time-varying [stochastic processes](https://en.wikipedia.org/wiki/Stochastic_process) that is prominent in the modeling of multivariate financial time series and other complex randomly-evolving processes. The term *autoregressive* indicates that each realization of the process is a linear function of previous values in the sequence plus a stochastic error term that is uncorrelated with those of other periods. That is, for a $ K $-variate time series $ \left\{y_i\right\}_{i=1}^{t-1} $ in which we assume only $ p $ past values are necessary to forecast the next observation $ y_{t} $, we have the VAR$(p)$ representation
+[*Vector autoregression*](https://en.wikipedia.org/wiki/Vector_autoregression) (VAR) is the multivariate extension of [*autoregression*](https://en.wikipedia.org/wiki/Autoregressive_model). That is, a VAR model is a statistical representation of a collection of time-varying [stochastic processes](https://en.wikipedia.org/wiki/Stochastic_process) that is prominent in the modeling of multivariate financial time series and other complex randomly-evolving processes. The term *autoregressive* indicates that each realization of the process is a linear function of previous values in the sequence plus a stochastic error term that is uncorrelated with those of other periods. That is, for a $ K$-variate time series $ \left\{y_i\right\}_{i=1}^{t-1}$ in which we assume only $ p$ past values are necessary to forecast the next observation $ y_{t}$, we have the VAR$(p)$ representation
 
 $$ y_{t}= c + A_1 y_t + A_2 y_{t-1} + ... + A_p y_{t-p} + u_{t}, $$
 
 where $ c = (c_1, ..., c_K)' $, $ A_i =  \begin{bmatrix}
 \alpha_{11,i} & \dots & \alpha_{1K,i} \\
 \vdots & \ddots & \vdots \\
-\alpha_{K1,i} & \dots & \alpha_{KK,i} \end{bmatrix} $, and $ \left\{u_i\right\}_{i=1}^{t} = \left\{(u_{1i}, ..., u_{Ki})' \right\}_{i=1}^{t} \subset \mathbb{R}^K$ is independently identically distributed with mean zero. We do not assume that all $ A_i $ are nonzero, so $p$ really represents an upper bound on the order of the process[<sub>[5]</sub>](#ref5).
+\alpha_{K1,i} & \dots & \alpha_{KK,i} \end{bmatrix} $, 
+and $ \left \{u_i \right\}_{i=1}^{t} = \left\{(u_{1i}, ..., u_{Ki})' \right\}_{i=1}^{t} \subset \mathbb{R}^K$ is independently identically distributed with mean zero. We do not assume that all $ A_i$ are nonzero, so $ p$ really represents an upper bound on the order of the process[<sub>[5]</sub>](#ref5).
 
 Now, in order to be confident that our lag parameters generalize well to out-of-sample predictions, we want to assert that the VAR$(p)$ processes are *stable*. That is, we want to check that they fluctuate about constant means and their variances do not change with respect to time. If this condition holds, then the processes are stationary[<sub>[5]</sub>](#ref5).
 
@@ -281,7 +282,7 @@ from which we extract the orders $p$ for use as the lag parameters in the deep l
 
 In practice, estimating the optimal lag is accomplished by iteratively fitting the model with an increasing estimate $m$ for $p$ and selecting the estimate $\hat{p}$ that minimizes the [Akaike information criterion](https://en.wikipedia.org/wiki/Akaike_information_criterion) (AIC)
 $$ \text{AIC}(m)=2\ln|\tilde{\Sigma}_u(m)|+\frac{2mK^2}{T} $$
-for the $K$-variate VAR($m$) process, where $\tilde{\Sigma}_u(m)$ is the [maximum likelihood estimator](https://en.wikipedia.org/wiki/Maximum_likelihood_estimation) of the covariance matrix of $u_t$ and $T$ is the number of observations in the process. For a more rigorous exploration of the VAR order selection process and of multivariate time series analysis as a whole, check out Helmut Lütkepohl's book on the topic[<sub>[5]</sub>](#ref5).
+for the $K$-variate VAR($m$) process, where $\tilde{\Sigma}_u(m)$ is the [maximum likelihood estimator](https://en.wikipedia.org/wiki/Maximum_likelihood_estimation) of the covariance matrix of $ u_t$ and $T$ is the number of observations in the process. For a more rigorous exploration of the VAR order selection process and of multivariate time series analysis as a whole, check out Helmut Lütkepohl's book on the topic[<sub>[5]</sub>](#ref5).
 
 ```python
 from statsmodels.tsa.api import VAR
@@ -304,7 +305,7 @@ A_1 & A_2 & A_3 & \dots & A_p \\
 I_K & 0 & 0 & \dots & 0 \\
 0 & I_K & 0 & \dots & 0 \\
 \vdots &  & \ddots &  & \vdots \\
-0 & \dots & 0 & I_K & 0 \end{bmatrix} $[<sup>3</sup>](#fn3)  are inside the [unit circle](https://en.wikipedia.org/wiki/Unit_circle). That is, the process is stable if all $Kp$ solutions to $\text{det}(A-\lambda I_{Kp})=0$ satisfy $|\lambda| < 1$. We can easily check this with [`statsmodels`](https://www.statsmodels.org/stable/generated/statsmodels.tsa.vector_ar.var_model.VAR.html#statsmodels.tsa.vector_ar.var_model.VAR).
+0 & \dots & 0 & I_K & 0 \end{bmatrix}$[<sup>3</sup>](#fn3)  are inside the [unit circle](https://en.wikipedia.org/wiki/Unit_circle). That is, the process is stable if all $Kp$ solutions to $\text{det}(A-\lambda I_{Kp})=0$ satisfy $|\lambda| < 1$. We can easily check this with [`statsmodels`](https://www.statsmodels.org/stable/generated/statsmodels.tsa.vector_ar.var_model.VAR.html#statsmodels.tsa.vector_ar.var_model.VAR).
 
 <sup>3. </sup><span id="fn3"><sup>$I_n$ is the $n\times n$ [identity matrix](https://en.wikipedia.org/wiki/Identity_matrix).</sup></span>
 
@@ -399,7 +400,8 @@ So, our input data for the model trained on order flow is a sequence of length 7
 In order to assess the [bias-variance tradeoff](https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff) of selecting different [hyperparameters](https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning)), we apply time series [cross-validated grid-search](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html). As advocated for in BDLOB[<sub>[2]</sub>](#ref2), we employ variational dropout as a stochastic regularizer in the deep neural network and exhaustively compare scoring over several different dropout rates. We apply [early stopping](https://en.wikipedia.org/wiki/Early_stopping) to avoid overfitting by terminating training when validation loss has not improved for 5 consecutive epochs[<sub>[4]</sub>](#ref4).
 
 In each time series, the ordering of data matters, so we can't apply the typical [$k$-fold cross-validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#k-fold_cross-validation) that is convention in cross-sectional models. Instead, a sliding or expanding training window must be used over multiple repetitions of out-of-sample predictions in order to find optimal hyperparameters.
-[<img src='Images/cross-val1.png' />](https://stackoverflow.com/questions/56601488/is-there-a-way-to-get-a-sliding-nested-cross-validation-using-sklearn)
+
+![<img src='Images/cross-val1.png' />](https://stackoverflow.com/questions/56601488/is-there-a-way-to-get-a-sliding-nested-cross-validation-using-sklearn)
 
 There are pros and cons to choosing either window type. For example, the expanding window includes more observations for training, but parameter confidence can lose interpretability due to the loss of sample size control[<sub>[5]</sub>](#ref5). Data permitting, the sliding window can offer sufficient training data in each repetition, but since we are in scarce supply, we choose to perform cross-validation with an expanding window.
 
@@ -515,7 +517,7 @@ As anticipated, our model trained on order flow outperforms the model trained on
 To test this hypothesis, we compare two trading strategies using our test set as the trading period. We ignore transaction costs and close positions at the end of the trading period. For each timestamp we trade at, we go long or short $\mu$ Bitcoins, where $\mu$ is 30% of the volume at the first ask or bid level we enter at, respectively[<sub>[2]</sub>](#ref2).
 
 ### Softmax Trading Strategy
-For this strategy, we choose a threshold probability $\alpha$ and go long if $\hat{p}_{1,t}>\alpha$ and go short if $\hat{p}_{-1,t}>\alpha$, where $\hat{p}_{1,t}$ is the predicted probability of an upward move at time $t$ and $\hat{p}_{-1,t}$ is the predicted probability of a downward move at time $t$. Only one position is allowed at any time. We store the cumulative profits and their ratios to transaction volume for a few threshold values.
+For this strategy, we choose a threshold probability $\alpha$ and go long if $ \hat{p}_{1,t}>\alpha$ and go short if $\hat{p}_{-1,t}>\alpha$, where $\hat{p}_{1,t}$ is the predicted probability of an upward move at time $ t$ and $ \hat{p}_{-1,t}$ is the predicted probability of a downward move at time $ t$. Only one position is allowed at any time. We store the cumulative profits and their ratios to transaction volume for a few threshold values.
 
 ```python
 alphas = [0.6,0.7,0.8]
@@ -583,7 +585,7 @@ for time_series in model_details:
 ```
 
 ### Bayesian Trading Strategy
-Now, how can we use uncertainty information to inform trading decisions? This strategy borrows BDLOB's use of *predictive [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory))* to summarize classification uncertainty due to variational dropout[<sub>[2]</sub>](#ref2). The metric of predictive entropy $\mathbb{H}$ follows from our aforementioned understanding of conditional expectation by making use of the predictive distribution captured by our 100 forward passes from earlier. For an input $x_t$, a predicted output $y_t$, training data $\mathcal{D}_{\text{train}}$, and estimated model parameters $\hat{w}$, we define predictive entropy by
+Now, how can we use uncertainty information to inform trading decisions? This strategy borrows BDLOB's use of *predictive [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory))* to summarize classification uncertainty due to variational dropout[<sub>[2]</sub>](#ref2). The metric of predictive entropy $\mathbb{H}$ follows from our aforementioned understanding of conditional expectation by making use of the predictive distribution captured by our 100 forward passes from earlier. For an input $ x_t$, a predicted output $y_t$, training data $\mathcal{D}_{\text{train}}$, and estimated model parameters $\hat{w}$, we define predictive entropy by
 $$
 \begin{equation}
      \begin{aligned}
@@ -596,7 +598,7 @@ $$
 
 Essentially, $j$ iterates over each class and summarizes the average level of uncertainty for outcomes of that class. The function is minimized when the model is certain––when one class has probability 1 and all others are 0. The function is maximized when the model is very uncertain––probability is uniform across the classes. Also observe that our earlier notation $\hat{p}_{j,t}$ is shorthand for $\frac{1}{100}\sum_{k=1}^{100} p(y_{t}=j|x_{t},\hat{w})$.
 
-Using this metric, we upsize our positions if our model is certain and downsize our positions if the model is uncertain. More specifically, we still go long or short if $\hat{p}_{1,t}>\alpha$ or $\hat{p}_{-1,t}>\alpha$, respectively, but we upsize our positions to $1.5 \times \mu$ if $\tilde{\mathbb{H}}_t<\beta_1$, keep our size $\mu$ if $\beta_1< \tilde{\mathbb{H}}_t < \beta_2$, downsize to $0.5 \times \mu$ if $\tilde{\mathbb{H}}_t>\beta_2$, and exit the current position if $\tilde{\mathbb{H}}_t < \beta_2$[<sub>[2]</sub>](#ref2). We fix values for $\alpha$ and $\beta_2$ and test different values for $\beta_1$.
+Using this metric, we upsize our positions if our model is certain and downsize our positions if the model is uncertain. More specifically, we still go long or short if $ \hat{p}_{1,t} > \alpha$ or $ \hat{p}_{-1,t} > \alpha$, respectively, but we upsize our positions to $1.5 \times \mu$ if $\tilde{\mathbb{H}}_t<\beta_1$, keep our size $\mu$ if $\beta_1< \tilde{\mathbb{H}}_t < \beta_2$, downsize to $0.5 \times \mu$ if $\tilde{\mathbb{H}}_t>\beta_2$, and exit the current position if $\tilde{\mathbb{H}}_t < \beta_2$[<sub>[2]</sub>](#ref2). We fix values for $\alpha$ and $\beta_2$ and test different values for $\beta_1$.
 
 ```python
 threshold = 0.7
@@ -710,7 +712,7 @@ for time_series in model_details:
 ### Results
 Now comes the question of how we should compare these strategies in terms of profit and risk. 
 
-Since each strategy returns different transaction volumes, we standardize profits to properly compare profitability. And while the [Sharpe ratio](https://en.wikipedia.org/wiki/Sharpe_ratio) is a popular measure of risk in a portfolio or strategy, it deems large positive and negative returns to be equally risky, so we follow BDLOB[<sub>[2]</sub>](#ref2) in using the Downward Deviation ratio $ \text{DDR} = \frac{E(R_t)}{\text{DD}_T} $ as our risk measure, where $E(R_t)$ is the average return per timestamp and $\text{DD}_T=\sqrt{\frac{1}{T} \sum_{t=1}^T \text{min}(R_t,0)^2}$ measures the deviation of negative returns. DDR, which is essentially the [Sortino ratio](https://en.wikipedia.org/wiki/Sortino_ratio) with a target rate of 0, has the desired property of penalizing negative returns and rewarding positive returns.
+Since each strategy returns different transaction volumes, we standardize profits to properly compare profitability. And while the [Sharpe ratio](https://en.wikipedia.org/wiki/Sharpe_ratio) is a popular measure of risk in a portfolio or strategy, it deems large positive and negative returns to be equally risky, so we follow BDLOB[<sub>[2]</sub>](#ref2) in using the Downward Deviation ratio $ \text{DDR} = \frac{\mathbb{E}(R_t)}{\text{DD}_T}$ as our risk measure, where $ \mathbb{E}(R_t)$ is the average return per timestamp and $ \text{DD}_T = \sqrt{\frac{1}{T} \sum_{t=1}^T \text{min}(R_t,0)^2}$ measures the deviation of negative returns. DDR, which is essentially the [Sortino ratio](https://en.wikipedia.org/wiki/Sortino_ratio) with a target rate of 0, has the desired property of penalizing negative returns and rewarding positive returns.
 
 ```python
 import matplotlib.pyplot as plt
@@ -788,11 +790,11 @@ To be in acccordance with the Box-Jenkins approach, we test the fitted models' r
 
 We compute our residuals as the [cross-entropy](https://en.wikipedia.org/wiki/Cross_entropy) of the classification problem at each timestamp, which we define by
 $$ \hat{u}_i=-\sum_{j=-1}^{1}y_i(j)\log\hat{y}_i(j) $$
-for $i\in\left\{1,...,T\right\}$, where $y_i$ is the [one-hot encoded](https://en.wikipedia.org/wiki/One-hot#Machine_learning_and_statistics) 3-variable vector of the true 1-step movement, $\hat{y}_i$ is our model's unrounded prediction of that encoding, and $T$ is the number of observations.
+for $i \in \{1,...,T\}$, where $y_i$ is the [one-hot encoded](https://en.wikipedia.org/wiki/One-hot#Machine_learning_and_statistics) 3-variable vector of the true 1-step movement, $\hat{y}_i$ is our model's unrounded prediction of that encoding, and $T$ is the number of observations.
 
 Letting $\hat{\tau}_i$ be the sample autocorrelations of the residuals and $m$ to be a maximum lag to test, we use the Ljung-Box statistic
 $$ Q(m) = T(T+2)\sum_{l=1}^{m}\frac{\hat{\tau}_l^2}{T-l} $$
-as our test statistic for the null hypothesis $H_0: \tau_1=...=\tau_m=0$ versus the alternative $H_a: \tau_i\neq0$ for some $i\in\left\{1,...,m\right\}$. For large $T$, the statistic is [chi-squared distributed](https://en.wikipedia.org/wiki/Chi-squared_distribution) with $m$ degrees of freedom, and we reject the null in favor of the alternative if the test statistic is greater than the critical value of the corresponding chi-squared distribution at the 99% confidence level. 
+as our test statistic for the null hypothesis $H_0: \tau_1=...=\tau_m=0$ versus the alternative $H_a: \tau_i \neq 0$ for some $i \in \{1,...,m\} $. For large $T$, the statistic is [chi-squared distributed](https://en.wikipedia.org/wiki/Chi-squared_distribution) with $m$ degrees of freedom, and we reject the null in favor of the alternative if the test statistic is greater than the critical value of the corresponding chi-squared distribution at the 99% confidence level. 
 
 ```python
 from statsmodels.stats.diagnostic import acorr_ljungbox
