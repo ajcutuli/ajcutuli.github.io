@@ -1,7 +1,7 @@
 ---
 layout: archive
 permalink: /blog/
-title: "Articles and Personal Projects"
+title: "Collection of Articles and Personal Projects"
 author_profile: true
 ---
 
