@@ -16,8 +16,3 @@ TL;DR on Hawkes processes, a class of self-exciting point processes that have ap
 ### [Trading in the Limit Order Book with CNN-LSTM](/blog/CNN-LSTM-LOB/)
 Using deep learning to extract order flow information from the limit order book and forecast directional moves<br>
 *Published July 18th, 2022*
-
-## 2021
-### [Portfolio Allocation Across Global Equity Exchanges](/blog/Exchange-Portfolio/)
-Simple article on an application of modern portfolio theory toward stock index investment<br>
-*Published August 22nd, 2021*
