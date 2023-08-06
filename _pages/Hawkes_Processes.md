@@ -134,7 +134,7 @@ In practice, such phenomena exhibit high endogeneity (i.e. $g$ close to 1), sugg
 5. <span id="ref5">C. Bowsher. Modelling security market events in continuous time: Intensity based, multivariate point process models. *Journal of Econometrics*, 141(2):876–912, 2007.<br>
 6. <span id="ref6">E. Errais, K. Giesecke, and L. R. Goldberg. Affine point processes and portfolio credit risk. *SIAM Journal on Financial Mathematics*, 1(1):642–665, 2010.<br>
 7. <span id="ref7">J. Bouchaud, J. Bonart, J. Donier, and M. Gould. *Trades, Quotes and Prices: Financial Markets Under the Microscope*. Cambridge University Press, 2018.<br>
-8. <span id="ref8">J. Olson and K. Carley. Exact and approximate em estimation of mutually exciting hawkes processes. *Statistical Inference for Stochastic Processes*, 16:63–80, 2013<br>
+8. <span id="ref8">J. Olson and K. Carley. Exact and approximate em estimation of mutually exciting hawkes processes. *Statistical Inference for Stochastic Processes*, 16:63–80, 2013.<br>
 9. <span id="ref9">T. Bochud and D. Challet. Optimal approximations of power laws with exponentials: application to volatility models with long memory. *Quantitative Finance*, 7(6):585–589, 2007.<br>
 10. <span id="ref10">S. J. Hardiman, N. Bercot, and J. Bouchaud. Critical reflexivity in financial markets: a hawkes process analysis. *The European Physical Journal B*, 86(10):442, 2013.<br>
 11. <span id="ref11">E. Bacry and J.F. Muzy. First- and second-order statistics characterization of hawkes processes and non-parametric estimation. *IEEE Transactions on Information Theory*, 62(4):2184–2202, 2016.<br>
@@ -142,7 +142,7 @@ In practice, such phenomena exhibit high endogeneity (i.e. $g$ close to 1), sugg
 13. <span id="ref13">V. Filimonov and D. Sornette. Quantifying reflexivity in financial markets: Toward a prediction of flash crashes. *Phys. Rev. E*, 85(5):056108, 2012.<br>
 14. <span id="ref14">E. Bacry and J.F. Muzy. Hawkes model for price and trades high-frequency dynamics. *Quantitative Finance*, 14, 2013.<br>
 15. <span id="ref15">I. M. Toke. ”market making” in an order book model and its impact on the spread. In *Econophysics of Order-Driven Markets, New Economic Windows*, pages 49–64. Springer Milan, 2011.<br>
-16. <span id="ref16">Á. Cartea, S. Jaimungal, and J. Ricci. Buy low, sell high: A high frequency trading perspective. *SIAM Journal on Financial Mathematics*, 5(1):415–444, 2014<br>
+16. <span id="ref16">Á. Cartea, S. Jaimungal, and J. Ricci. Buy low, sell high: A high frequency trading perspective. *SIAM Journal on Financial Mathematics*, 5(1):415–444, 2014.<br>
 17. <span id="ref17">G. Bormetti, L. M. Calcagnile, M. Treccani, F. Corsi, S. Marmi, and F. Lillo. Modelling systemic price cojumps with hawkes factor models. *Quantitative Finance*, 15(7):1137–1156, 2015.<br>
 18. <span id="ref18">M. Rambaldi, P. Pennesi, and F. Lillo. Modeling foreign exchange market activity around macroeconomic news: Hawkes-process approach. *Physical review. E, Statistical, nonlinear, and soft matter physics*, 91(1):012819, 2014.<br>
 19. <span id="ref19">E. Derman and P. Wilmott. The financial modelers’ manifesto. 2009.<br>

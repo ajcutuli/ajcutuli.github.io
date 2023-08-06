@@ -830,15 +830,15 @@ In this notebook, we implemented a well-studied and popular deep learning model 
 Thank you to Moritz Voss for pushing me to pursue this project and to the many researchers whom I reference below.
 
 ## References
-1. <span id="ref1">Zhang, Zihao, Stefan Zohren, and Stephen Roberts (2019). “DeepLOB: Deep Convolutional Neural Networks for Limit Order Books”. In: *IEEE Transactions On Signal Processing* 67.11, pp. 3001–3012.<br>
-2. <span id="ref2">Zhang, Zihao, Stefan Zohren, and Stephen Roberts (2018). “BDLOB: Bayesian Deep Convolutional Neural Networks For Limit Order Books”. In: *arXiv preprint arXiv:1811.10041*.<br>
-3. <span id="ref3">Cont, Rama, Arseniy Kukanov, and Sasha Stoikov (2014). “The Price Impact Of
-Order Book Events”. In: *Journal Of Financial Econometrics* 12.1, pp. 47–88.<br>
-4. <span id="ref4">Kolm, Petter, Jeremy Turiel, and Nicholas Westray (2021). "Deep Order Flow Imbalance: Extracting Alpha At Multiple Horizons From The Limit Order Book". In: *Available at SSRN 3900141*.<br>
-5. <span id="ref5">Lütkepohl, Helmut (2005). *New Introduction to Multiple Time Series Analysis*. Springer.<br> 
-6. <span id="ref6">Dixon, Matthew F., Igor Halperin, and Paul Bilokon (2020). *Machine Learning in Finance: From Theory to Practice*. Springer.<br>
-7. <span id="ref7">Hochreiter, Sepp and Jürgen Schmidhuber (1997). “Long Short-Term Memory”. In: *Neural Computation* 9.8, pp. 1735–1780.<br>
-8. <span id="ref8">Ntakaris, Adamantios, Martin Magris, Juho Kanniainen, Moncef Gabbouj, and Alexandros Iosifidis (2018). “Benchmark Dataset For Mid-Price Forecasting Of Limit Order Book Data With Machine Learning Methods”. In: *Journal of Forecasting* 37.8, pp. 852–866.<br>
-9. <span id="ref9">Yang, Kiyoung, and Cyrus Shahabi (2005). "On the Stationarity of Multivariate Time Series for Correlation-Based Data Analysis". In: *Fifth IEEE International Conference on Data Mining*, pp. 1-4.<br>
-10. <span id="ref10">Gal, Yarin (2016). *Uncertainty in Deep Learning*. Phd Thesis, University of Cambridge.<br>
-11. <span id="ref11">Surakhi, Ola, Martha A. Zaidan, Pak Lun Fung, Naser Hossein Motlagh, Sami Serhan, Mohammad AlKhanafseh, Rania M. Ghoniem, and Tareq Hussein (2021). "Time-Lag Selection for Time-Series Forecasting Using Neural Network and Heuristic Algorithm". In: *Electronics* 10.20.<br>
+1. <span id="ref1">Z. Zhang, S. Zohren, and S. Roberts. DeepLOB: Deep Convolutional Neural Networks for Limit Order Books *IEEE Transactions On Signal Processing* 67(11):3001–3012, 2019.<br>
+2. <span id="ref2">Z. Zhang, S. Zohren, and S. Roberts. BDLOB: Bayesian Deep Convolutional Neural Networks For Limit Order Books. *arXiv preprint arXiv:1811.10041*, 2018.<br>
+3. <span id="ref3">R. Cont, A. Kukanov, and S. Stoikov. The Price Impact Of
+Order Book Events. *Journal Of Financial Econometrics* 12(1):47–88, 2014.<br>
+4. <span id="ref4">P. Kolm, J. Turiel, and N. Westray. Deep Order Flow Imbalance: Extracting Alpha At Multiple Horizons From The Limit Order Book. *Available at SSRN 3900141*, 2021.<br>
+5. <span id="ref5">H. Lütkepohl. *New Introduction to Multiple Time Series Analysis*. Springer, 2005.<br> 
+6. <span id="ref6">M. F. Dixon, I. Halperin, and P. Bilokon. *Machine Learning in Finance: From Theory to Practice*. Springer, 2020.<br>
+7. <span id="ref7">S. Hochreiter and J. Schmidhuber. Long Short-Term Memory. *Neural Computation* 9(8):1735–1780, 1997.<br>
+8. <span id="ref8">A. Ntakaris, M. Magris, J. Kanniainen, M. Gabbouj, and A. Iosifidis. Benchmark Dataset For Mid-Price Forecasting Of Limit Order Book Data With Machine Learning Methods. *Journal of Forecasting* 37(8):852–866, 2018.<br>
+9. <span id="ref9">K. Yang and C. Shahabi. On the Stationarity of Multivariate Time Series for Correlation-Based Data Analysis. *Fifth IEEE International Conference on Data Mining* 1-4, 2005.<br>
+10. <span id="ref10">Y. Gal. *Uncertainty in Deep Learning*. Phd Thesis, University of Cambridge, 2016.<br>
+11. <span id="ref11">O. Surakhi, M. A. Zaidan, P. L. Fung, N. H. Motlagh, S. Serhan, M. AlKhanafseh, R. M. Ghoniem, and T. Hussein. Time-Lag Selection for Time-Series Forecasting Using Neural Network and Heuristic Algorithm. *Electronics* 10(20), 2021.<br>
