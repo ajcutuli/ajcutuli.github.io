@@ -76,7 +76,7 @@ $$
 
 where $ m $ is the number of LSTM units in the module, $ \sigma := (1+e^{-x})^{-1} $ is the sigmoid activation function, $ \text{f}_t \in \mathbb{R}^m $ is the forget gate's activation vector, $ \text{i}_t \in \mathbb{R}^m $ is the input gate's activation vector, $ \text{o}_t \in \mathbb{R}^m $ is the output gate's activation vector, $ \text{c}_t \in \mathbb{R}^m $ is the LSTM unit's hidden state vector, and $ \text{h}_t \in \mathbb{R}^m $ is the unit's output vector. $ \text{U} \in \mathbb{R}^{m \times n} $, $ \text{W} \in \mathbb{R}^{m \times m} $, and $ \text{b} \in \mathbb{R}^m $ are learned during training and represent the weight matrices in connection to the input vector, the weight matrices in connection to the previous output state, and the bias vectors, respectively. 
 
-![](image-2.png)
+<img src="image-2.png" alt="drawing" width="200"/>
 
 Moreover, Zhang et al[<sub>[2]</sub>](#ref2) showcase the performance benefit of applying [variational dropout](https://arxiv.org/pdf/1512.05287v5.pdf) to the model as a stochastic [regularizer](https://en.wikipedia.org/wiki/Regularization_(mathematics)) to reduce [overfitting](https://en.wikipedia.org/wiki/Overfitting) and make decisions with some understanding of the predictive variation produced by our model parameters. That is, with [*Monte-Carlo (MC) dropout*](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-quantifying-uncertainty/mc-dropout.html), we can add [epistemic uncertainty](https://en.wikipedia.org/wiki/Uncertainty_quantification#Aleatoric_and_epistemic)[<sup>1</sup>](#fn1) to our neural network architecture by making multiple out-of-sample predictions and dropping a different random sample of neurons with every forward pass. This random sampling leads to different predictions on each evaluation iteration, so we can average the results to––in theory––improve out-of-sample predictions. The dropout layer is inserted after the Inception Module, and we determine its rate with [cross-validated grid-search](https://scikit-learn.org/stable/modules/grid_search.html).
 
@@ -401,7 +401,7 @@ In order to assess the [bias-variance tradeoff](https://en.wikipedia.org/wiki/Bi
 
 In each time series, the ordering of data matters, so we can't apply the typical [$k$-fold cross-validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#k-fold_cross-validation) that is convention in cross-sectional models. Instead, a sliding or expanding training window must be used over multiple repetitions of out-of-sample predictions in order to find optimal hyperparameters.
 
-![](image-4.png)
+<img src="image-4.png" alt="drawing" width="200"/>
 
 There are pros and cons to choosing either window type. For example, the expanding window includes more observations for training, but parameter confidence can lose interpretability due to the loss of sample size control[<sub>[5]</sub>](#ref5). Data permitting, the sliding window can offer sufficient training data in each repetition, but since we are in scarce supply, we choose to perform cross-validation with an expanding window.
 
@@ -509,7 +509,7 @@ for ax in zip((ax1,ax2),(mat_con1,mat_con2),('OF','OFI')):
     
 fig.tight_layout()
 ```
-![](image.png)
+<img src="image.png" alt="drawing" width="200"/>
 
 As anticipated, our model trained on order flow outperforms the model trained on order flow imbalance. It appears to predict downward moves better and upward moves only slightly better on the whole. This is particularly the case when it comes to upward moves; the order flow model is more illiberal with its upward predictions, but the predictions it does make are clearly more in line with the true moves. On the other hand, both models are not good at predicting downward moves. This will likely be problematic in our trading scenario, since the Bitcoin mid price dropped by 1% over the course of the trading period we consider.
 
@@ -517,7 +517,13 @@ As anticipated, our model trained on order flow outperforms the model trained on
 To test this hypothesis, we compare two trading strategies using our test set as the trading period. We ignore transaction costs and close positions at the end of the trading period. For each timestamp we trade at, we go long or short $\mu$ Bitcoins, where $\mu$ is 30% of the volume at the first ask or bid level we enter at, respectively[<sub>[2]</sub>](#ref2).
 
 ### Softmax Trading Strategy
-For this strategy, we choose a threshold probability $\alpha$ and go long if $ \hat{p}_{1,t}>\alpha $ and go short if $ \hat{p}_{-1,t}>\alpha $, where $ \hat{p}_{1,t} $ is the predicted probability of an upward move at time $ t $ and $ \hat{p}_{-1,t} $ is the predicted probability of a downward move at time $ t $. Only one position is allowed at any time. We store the cumulative profits and their ratios to transaction volume for a few threshold values.
+For this strategy, we choose a threshold probability $\alpha$ and go long if 
+$ \hat{p}_{1,t}>\alpha $ and go short if 
+$ \hat{p}_{-1,t}>\alpha $, where 
+$ \hat{p}_{1,t} $ is the predicted probability of an upward move at time 
+$ t $ and 
+$ \hat{p}_{-1,t} $ is the predicted probability of a downward move at time 
+$ t $. Only one position is allowed at any time. We store the cumulative profits and their ratios to transaction volume for a few threshold values.
 
 ```python
 alphas = [0.6,0.7,0.8]
@@ -597,9 +603,7 @@ $$
 $$
 
 Essentially, 
-$ j $ iterates over each class and summarizes the average level of uncertainty for outcomes of that class. The function is minimized when the model is certain––when one class has probability 1 and all others are 0. The function is maximized when the model is very uncertain––probability is uniform across the classes. Also observe that our earlier notation 
-$ \hat{p}_{j,t} $ is shorthand for 
-$ \frac{1}{100}\sum_{k=1}^{100} p(y_{t}=j|x_{t},\hat{w}) $.
+$ j $ iterates over each class and summarizes the average level of uncertainty for outcomes of that class. The function is minimized when the model is certain––when one class has probability 1 and all others are 0. The function is maximized when the model is very uncertain––probability is uniform across the classes. Also observe that our earlier notation $ \hat{p}_{j,t}$ is shorthand for $ \frac{1}{100}\sum_{k=1}^{100} p(y_{t}=j|x_{t},\hat{w})$.
 
 Using this metric, we upsize our positions if our model is certain and downsize our positions if the model is uncertain. More specifically, we still go long or short if 
 $ \hat{p}_{1,t} > \alpha$ or 
