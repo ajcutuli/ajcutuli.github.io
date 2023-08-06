@@ -17,6 +17,6 @@ My name is Aric. I'm currently a Masters student of Financial Engineering at Col
 
 My background is quite multidisplinary. Financial engineering is a combination of mathematics, statistics, computer science, and financial theory, and as an undergraduate student at the University of California, Los Angeles, I majored in Mathematics and Economics and earned a Specialization in Computing for additional computer science oriented coursework I pursued.
 
-I've spent the past two summers as an Quantitative Summer Analyst at Citigroup Global Markets. This summer, I rotated on the Equities Central Risk desk, where my focus was on improving a portion of their systematic order filtering system. In 2022, I worked in the AI Innovation Lab and helped fine-tune Google's BERT language model to classify news alerts in the context of commodities markets.
+I spent the past two summers interning as a quantitative analyst at Citigroup Global Markets. This summer, I rotated on the Equities Central Risk desk, where my focus was on improving a portion of their systematic order filtering system. In 2022, I worked in the AI Innovation Lab and helped fine-tune Google's BERT language model to classify news alerts in the context of commodities markets.
 
 Here is my full [CV](/files/Aric_Cutuli_CV.pdf).
