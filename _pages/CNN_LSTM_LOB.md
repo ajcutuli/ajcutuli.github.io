@@ -252,12 +252,9 @@ model_details['OFI']['data'] = ofi_data
 Now that we have our data, we seek to train the CNN-LSTM to accomplish the forecasting task of classifying future mid prices by their directional moves. In this section, we adopt the [Box-Jenkins approach](https://en.wikipedia.org/wiki/Box%E2%80%93Jenkins_method) to time series modeling by first taking a comically long-winded aside to recognize the time series as vector autoregressive (VAR) processes and then by tuning necessary hyperparameters of the deep learning model and evaluating the trained deep learning model.
 
 ### Vector Autoregressive Processes
-[*Vector autoregression*](https://en.wikipedia.org/wiki/Vector_autoregression) (VAR) is the multivariate extension of [*autoregression*](https://en.wikipedia.org/wiki/Autoregressive_model). That is, a VAR model is a statistical representation of a collection of time-varying [stochastic processes](https://en.wikipedia.org/wiki/Stochastic_process) that is prominent in the modeling of multivariate financial time series and other complex randomly-evolving processes. The term *autoregressive* indicates that each realization of the process is a linear function of previous values in the sequence plus a stochastic error term that is uncorrelated with those of other periods. That is, for a $K$-variate time series 
-$\{y_i\}_{i=1}^{t-1}$ 
-in which we assume only 
-$ p $ 
-past values are necessary to forecast the next observation 
-$ y_{t}$
+[*Vector autoregression*](https://en.wikipedia.org/wiki/Vector_autoregression) (VAR) is the multivariate extension of [*autoregression*](https://en.wikipedia.org/wiki/Autoregressive_model). That is, a VAR model is a statistical representation of a collection of time-varying [stochastic processes](https://en.wikipedia.org/wiki/Stochastic_process) that is prominent in the modeling of multivariate financial time series and other complex randomly-evolving processes. The term *autoregressive* indicates that each realization of the process is a linear function of previous values in the sequence plus a stochastic error term that is uncorrelated with those of other periods. That is, for a $K$-variate time series $ \{y_i\}_{i=1}^{t-1}$
+in which we assume only $p$
+past values are necessary to forecast the next observation $y_{t}$
 , we have the 
 VAR$\(p\)$ 
 representation
@@ -265,16 +262,13 @@ representation
 $$ y_{t}= c + A_1 y_t + A_2 y_{t-1} + ... + A_p y_{t-p} + u_{t}, $$
 
 where $ c = (c_1, ..., c_K)'$
-, 
-$ A_i =  \begin{bmatrix}
+, $ A_i =  \begin{bmatrix}
     \alpha_{11,i} & \dots & \alpha_{1K,i} \\
     \vdots & \ddots & \vdots \\
-    \alpha_{K1,i} & \dots & \alpha_{KK,i} 
-\end{bmatrix} 
-$, and 
-$ \{u_i \}_{i=1}^{t} = \{(u_{1i}, ..., u_{Ki})' \}_{i=1}^{t} \subset \mathbb{R}^K$ is independently identically distributed with mean zero. We do not assume that all 
-$ A_i$ are nonzero, so 
-$ p$ really represents an upper bound on the order of the process[<sub>[5]</sub>](#ref5).
+    \alpha_{K1,i} & \dots & \alpha_{KK,i} \end{bmatrix} 
+    $
+, and $ \{u_i \}_{i=1}^{t} = \{(u_{1i}, ..., u_{Ki})' \}_{i=1}^{t} \subset \mathbb{R}^K$ 
+is independently identically distributed with mean zero. We do not assume that all $ A_i$ are nonzero, so $ p$ really represents an upper bound on the order of the process[<sub>[5]</sub>](#ref5).
 
 Now, in order to be confident that our lag parameters generalize well to out-of-sample predictions, we want to assert that the VAR$(p)$ processes are *stable*. That is, we want to check that they fluctuate about constant means and their variances do not change with respect to time. If this condition holds, then the processes are stationary[<sub>[5]</sub>](#ref5).
 
