@@ -8,7 +8,7 @@ title: "Trading in the Limit Order Book with CNN-LSTM"
 {% include base_path %}
 Github link [here](https://github.com/ajcutuli/OFI_NN_Project/blob/main/DeepOFI.ipynb)
 
-**Note:** This is largely a replication of work done by the likes of Petter Kolm, Nicholas Westray, Jeremy Turiel, Zihao Zhang, Stefan Zohren, and others. I do not claim this to be novel work. I claim that I learned a lot.
+**Note:** This is largely a replication of work done by the likes of Petter Kolm, Nicholas Westray, Jeremy Turiel, Zihao Zhang, Stefan Zohren, and others. I don't claim that this is novel work but instead that I learned a lot.
 
 ## Opening Remarks
 The enigma concerning the predictability of markets has always been the principal driver of my interest in finance, and it inpires my ongoing exploration of machine learning's applications within the analysis and forecasting of financial time series. Today, we compare the performance of a studied deep learning model for limit order book forecasting on two stationary representations of the limit order book.
