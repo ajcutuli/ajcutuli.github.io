@@ -29,21 +29,21 @@ $$ \begin{equation*} \text{s}_t^{LOB} := (a_t^1, v_t^{1,a}, b_t^1, v_t^{1,b}, ..
 
 We define the *bid order flows* (bOF) and *ask order flows* (aOF) at a timestamp to be 10-variable vectors computed using two consecutive order book states, where each element is given by
 
-$$ \text{bOF}_{t,i} :=   \left\{
-\begin{array*}{ll}
+$$ \begin{equation*} \text{bOF}_{t,i} :=   \left\{
+\begin{array}{ll}
       v_t^{i,b}, & b_t^i > b_{t-1}^i \\
       v_t^{i,b} - v_{t-1}^{i,b}, & b_t^i = b_{t-1}^i \\
       -v_t^{i,b}, & b_t^i < b_{t-1}^i \\
-\end{array*} 
-\right. $$
+\end{array} 
+\right \end{equation*}. $$
 
-$$ \text{aOF}_{t,i} :=   \left\{
-\begin{array*}{ll}
+$$ \begin{equation*} \text{aOF}_{t,i} :=   \left\{
+\begin{array}{ll}
       -v_t^{i,a}, & a_t^i > a_{t-1}^i \\
       v_t^{i,a} - v_{t-1}^{i,a}, & a_t^i = a_{t-1}^i \\
       v_t^{i,a}, & a_t^i < a_{t-1}^i \\
-\end{array*} 
-\right. $$
+\end{array} 
+\right \end{equation*}. $$
 
 for $i = 1, ..., 10$. With this, we define *order flow* (OF)
 
