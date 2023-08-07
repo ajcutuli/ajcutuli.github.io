@@ -29,29 +29,29 @@ $$ \begin{equation*} \text{s}_t^{LOB} := (a_t^1, v_t^{1,a}, b_t^1, v_t^{1,b}, ..
 
 We define the *bid order flows* (bOF) and *ask order flows* (aOF) at a timestamp to be 10-variable vectors computed using two consecutive order book states, where each element is given by
 
-$$ \begin{equation*} \text{bOF}_{t,i} :=   \left\{
+$$ \text{bOF}_{t,i} :=   \left\{
 \begin{array}{ll}
       v_t^{i,b}, & b_t^i > b_{t-1}^i \\
       v_t^{i,b} - v_{t-1}^{i,b}, & b_t^i = b_{t-1}^i \\
       -v_t^{i,b}, & b_t^i < b_{t-1}^i \\
 \end{array} 
-\right \end{equation*}. $$
+\right. $$
 
-$$ \begin{equation*} \text{aOF}_{t,i} :=   \left\{
+$$ \text{aOF}_{t,i} :=   \left\{
 \begin{array}{ll}
       -v_t^{i,a}, & a_t^i > a_{t-1}^i \\
       v_t^{i,a} - v_{t-1}^{i,a}, & a_t^i = a_{t-1}^i \\
       v_t^{i,a}, & a_t^i < a_{t-1}^i \\
 \end{array} 
-\right \end{equation*}. $$
+\right. $$
 
 for $i = 1, ..., 10$. With this, we define *order flow* (OF)
 
-$$ \text{OF}_t :=  (\text{bOF}_{t,1}, \text{aOF}_{t,1}, ..., \text{bOF}_{t,10}, \text{aOF}_{t,10})^T \in \mathbb{R}^{20} $$
+$$ \begin{equation*} \text{OF}_t :=  (\text{bOF}_{t,1}, \text{aOF}_{t,1}, ..., \text{bOF}_{t,10}, \text{aOF}_{t,10})^T \in \mathbb{R}^{20} \end{equation*} $$
 
 and *order flow imbalance* (OFI)
 
-$$ \text{OFI}_t := \text{bOF}_t - \text{aOF}_t \in \mathbb{R}^{10}. $$
+$$ \begin{equation*} \text{OFI}_t := \text{bOF}_t - \text{aOF}_t \in \mathbb{R}^{10} \end{equation*} . $$
 
 While a sequence of limit order book states is a complex non-stationary process, the above formulas for order flow and order flow imbalance transform consecutive order book states into a [stationary process](https://en.wikipedia.org/wiki/Stationary_process). This property allows for our eventual test test of the deep learning model to be reasonably similar to the training set and thus appropriate to predict off of using the model. It also allows for more ease in the learning of long-term dependencies by our LSTM layer, which Kolm et al see as a reason behind their finding that sequence length only marginally impacted model performance[<sub>[4]</sub>](#ref4). On a separate note, when trained on order flow, which keeps the bid and ask sides separate, the CNN layers of our model will be given the added flexibility of being able to combine bid and ask order flows asymmetrically, so we hypothesize that our forecasting model will perform better on order flow than on order flow imbalance. This is expressed by Kolm et al[<sub>[4]</sub>](#ref4) and shared by time series analysis theory[<sub>[5]</sub>](#ref5).
 
