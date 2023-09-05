@@ -87,6 +87,7 @@ $ t $. Only one position is allowed at any time. We store the cumulative profits
 
 ### Bayesian Trading Strategy
 To leverage uncertainty information, we use *predictive entropy* to summarize classification uncertainty due to variational dropout[<sub>[2]</sub>](#ref2). The metric of predictive entropy $\mathbb{H}$ follows from our aforementioned understanding of conditional expectation by making use of the predictive distribution captured by our 100 forward passes from earlier. For an input $ x_t$, a predicted output $y_t$, training data $\mathcal{D}_{\text{train}}$, and estimated model parameters $\hat{w}$, we define predictive entropy by
+
 $$
 \begin{equation*}
      \begin{aligned}
