@@ -97,9 +97,9 @@ $$
 \end{equation*}
 $$
 
-Essentially, $ j$ iterates over each class and summarizes the average level of uncertainty for outcomes of that class. The function is minimized when the model is certain––when one class has probability 1 and all others are 0. The function is maximized when the model is very uncertain––probability is uniform across the classes. Also observe that our earlier notation $ \hat p_{j,t}$ is shorthand for $ \frac{1}{100} \sum_{k=1}^{100} p(y_t=j \mid x_t,\hat w)$.
+Essentially, $ j$ iterates over each class and summarizes the average level of uncertainty for outcomes of that class. The function is minimized when the model is certain––when one class has probability 1 and all others are 0. The function is maximized when the model is very uncertain––probability is uniform across the classes. Also observe that our earlier notation $$\hat p_{j,t}$$ is shorthand for $$\frac{1}{100} \sum_{k=1}^{100} p(y_t=j \mid x_t,\hat w)$$.
 
-Using this metric, we upsize our positions if our model is certain and downsize our positions if the model is uncertain. More specifically, we still go long or short if $$\hat{p}_{1,t} > \alpha$$ or $$\hat{p}_{-1,t} > \alpha$$, respectively, but we upsize our positions to $$1.5 \times \mu$$ if $$\tilde \mathbb{H}_t < \beta_1$$, keep our size $$\mu$$ if $$\beta_1< \tilde \mathbb{H}_t < \beta_2$$, downsize to $$0.5 \times \mu$$ if $$\tilde \mathbb{H}_t>\beta_2$$, and exit the current position if $$\tilde \mathbb{H}_t < \beta_2$$[<sub>[2]</sub>](#ref2). We fix values for $$\alpha$$ and $$\beta_2$$ and test different values for $$\beta_1$$.
+Using this metric, we upsize our positions if our model is certain and downsize our positions if the model is uncertain. More specifically, we still go long or short if $$\hat{p}_{1,t} > \alpha$$ or $$\hat{p}_{-1,t} > \alpha$$, respectively, but we upsize our positions to $$1.5 \times \mu$$ if $$\tilde{\mathbb H}_t < \beta _1$$, keep our size $$\mu$$ if $$\beta_1< \tilde{\mathbb H}_t < \beta_2$$, downsize to $$0.5 \times \mu$$ if $$\tilde{\mathbb H}_t > \beta_2$$, and exit the current position if $$\tilde{\mathbb H}_t < \beta_2$$[<sub>[2]</sub>](#ref2). We fix values for $$\alpha$$ and $$\beta_2$$ and test different values for $$\beta_1$$.
 
 ### Results
 Now comes the question of how we should compare these strategies in terms of profit and risk. 
