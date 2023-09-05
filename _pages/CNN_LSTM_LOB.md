@@ -90,8 +90,8 @@ To leverage uncertainty information, we use *predictive entropy* to summarize cl
 $$
 \begin{equation*}
      \begin{aligned}
-     \mathbb{H}(y_t|x_t,\mathcal{D}_{\text{train}}) &= -\sum_{j=-1}^1 p(y_t=j|x_t,\mathcal{D}_{\text{train}})\log p(y_t=j|x_t,\mathcal{D}_{\text{train}}) \\
-    &\approx -\sum_{j=-1}^{1} \left( \frac{1}{100}\sum_{k=1}^{100} p(y_t=j|x_t,\hat w)\right) \log \left(\frac{1}{100}\sum_{k=1}^{100} p(y_t=j|x_t,\hat w)\right) \\
+     \mathbb{H}(y_t \mid x_t,\mathcal{D}_{\text{train}}) &= -\sum_{j=-1}^1 p(y_t=j \mid x_t,\mathcal{D}_{\text{train}})\log p(y_t=j \mid x_t,\mathcal{D}_{\text{train}}) \\
+    &\approx -\sum_{j=-1}^{1} \left( \frac{1}{100}\sum_{k=1}^{100} p(y_t=j \mid x_t,\hat w)\right) \log \left(\frac{1}{100}\sum_{k=1}^{100} p(y_t=j \mid x_t,\hat w)\right) \\
     &=: \tilde{\mathbb{H}}_t.
     \end{aligned}
 \end{equation*}
