@@ -99,12 +99,12 @@ $$
 
 Essentially, $ j$ iterates over each class and summarizes the average level of uncertainty for outcomes of that class. The function is minimized when the model is certain––when one class has probability 1 and all others are 0. The function is maximized when the model is very uncertain––probability is uniform across the classes. Also observe that our earlier notation $ \hat p_{j,t}$ is shorthand for $ \frac{1}{100} \sum_{k=1}^{100} p(y_t=j \mid x_t,\hat w)$.
 
-Using this metric, we upsize our positions if our model is certain and downsize our positions if the model is uncertain. More specifically, we still go long or short if $\hat{p}_{1,t} > \alpha $ or $ \hat{p}_{-1,t} > \alpha$, respectively, but we upsize our positions to $ 1.5 \times \mu$ if $ \tilde \mathbb{H}_t < \beta_1$, keep our size $\mu$ if $ \beta_1< \tilde \mathbb{H}_t < \beta_2$, downsize to $0.5 \times \mu$ if $ \tilde \mathbb{H}_t>\beta_2$, and exit the current position if $ \tilde \mathbb{H}_t < \beta_2$[<sub>[2]</sub>](#ref2). We fix values for $\alpha$ and $\beta_2$ and test different values for $\beta_1$.
+Using this metric, we upsize our positions if our model is certain and downsize our positions if the model is uncertain. More specifically, we still go long or short if $$\hat{p}_{1,t} > \alpha$$ or $$\hat{p}_{-1,t} > \alpha$$, respectively, but we upsize our positions to $1.5 \times \mu$ if $\tilde \mathbb{H}_t < \beta_1$, keep our size $\mu$ if $ \beta_1< \tilde \mathbb{H}_t < \beta_2$, downsize to $0.5 \times \mu$ if $\tilde \mathbb{H}_t>\beta_2$, and exit the current position if $\tilde \mathbb{H}_t < \beta_2$[<sub>[2]</sub>](#ref2). We fix values for $\alpha$ and $\beta_2$ and test different values for $\beta_1$.
 
 ### Results
 Now comes the question of how we should compare these strategies in terms of profit and risk. 
 
-Since each strategy returns different transaction volumes, we standardize profits to properly compare profitability. And while the Sharpe ratio is a popular measure of risk in a portfolio or strategy, it deems large positive and negative returns to be equally risky, so we follow BDLOB[<sub>[2]</sub>](#ref2) in using the Downward Deviation ratio $ \text{DDR} = \frac{\mathbb{E}(R_t)}{\text{DD}_T} $ as our risk measure, where $ \mathbb{E}(R_t) $ is the average return per timestamp and $ \text{DD}_T = \sqrt{\frac{1}{T} \sum_{t=1}^T \text{min}(R_t,0)^2} $ measures the deviation of negative returns. DDR has the desired property of penalizing negative returns and rewarding positive returns.
+Since each strategy returns different transaction volumes, we standardize profits to properly compare profitability. And while the Sharpe ratio is a popular measure of risk in a portfolio or strategy, it deems large positive and negative returns to be equally risky, so we follow BDLOB[<sub>[2]</sub>](#ref2) in using the Downward Deviation ratio $$\text{DDR} = \frac{\mathbb{E}(R_t)}{\text{DD}_T}$$ as our risk measure, where $$\mathbb{E}(R_t)$$ is the average return per timestamp and $$\text{DD}_T = \sqrt{\frac{1}{T} \sum_{t=1}^T \text{min}(R_t,0)^2}$$ measures the deviation of negative returns. DDR has the desired property of penalizing negative returns and rewarding positive returns.
 
 Unfortunately, the models were both very poor in their ability to generate profits, but this should come as no surprise. Recall that our models predict downward moves almost identically poorly, so it is reasonable to believe that the model is doomed to behave poorly in a downward trending regime. And since the Bitcoin mid price dropped 1% over the duration of the trading period, our understanding of the model justify the results we see.
 
@@ -113,14 +113,9 @@ Although the losses are very disappointing, we still observe steadiness in the B
 Proper downsampling would have been a nice add in our training procedure in order to help our model better predict the downward moves that were observed in the out-of-sample data.
 
 # Model Diagnostics
-In acccordance with the Box-Jenkins approach, we test the fitted models' residuals $\{ \hat{u}_i \}_{i=1}^T$ for any autocorrelation. If true, there is statistical evidence that the model is underfitting, and we should increase the lag parameter of our sequential model and re-train. If false, we accept the model residuals to be white noise. 
+In acccordance with the Box-Jenkins approach, we test the fitted models' residuals $$\{ \hat{u}_i \}_{i=1}^T$$ for any autocorrelation. If true, there is statistical evidence that the model is underfitting, and we should increase the lag parameter of our sequential model and re-train. If false, we accept the model residuals to be white noise. 
 
-We compute our residuals as the cross-entropy of the classification problem at each timestamp, which we define by
-$$ \hat u_i=-\sum_{j=-1}^1y_i(j)\log\hat y_i(j) $$
-for 
-$i \in \{1,...,T\}$, where 
-$y_i$ is the one-hot encoded 3-variable vector of the true 1-step movement, 
-$\hat{y}_i$ is our model's unrounded prediction of that encoding, and $T$ is the number of observations.
+We compute our residuals as the cross-entropy of the classification problem at each timestamp, which we define by $$\hat u_i=-\sum_{j=-1}^1y_i(j)\log\hat y_i(j)$$ for $$ i \in \{1,...,T\}$$, where $$ y_i$$ is the one-hot encoded 3-variable vector of the true 1-step movement, $$\hat{y}_i$$ is our model's unrounded prediction of that encoding, and $$T$$ is the number of observations.
 
 Letting 
 $\hat{\tau}_i$ be the sample autocorrelations of the residuals and $m$ to be a maximum lag to test, we use the Ljung-Box statistic
