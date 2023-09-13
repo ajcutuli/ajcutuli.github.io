@@ -13,7 +13,7 @@ Brief intro to Hawkes processes, a class of self-exciting point processes that h
 *Published June 12th, 2023*
 
 ### [Separation Capacity of Randomly Initialized DNNs.](/files/Separation_Capacity.pdf) 
-On the ability of feedforward neural networks to linearly separate two datasets without backpropagation<br>
+On the ability of untrained feedforward neural networks to linearly separate two datasets<br>
 With Weitao Zhu and Harold Haodong Miao<br>
 EECS 6699: Mathematics of Deep Learning<br>
 *Published May 9th, 2023*
