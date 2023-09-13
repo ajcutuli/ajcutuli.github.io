@@ -12,12 +12,6 @@ author_profile: true
 Brief intro to Hawkes processes, a class of self-exciting point processes that have applications in finance<br>
 *Published June 12th, 2023*
 
-### [Separation Capacity of Randomly Initialized DNNs.](/files/Separation_Capacity.pdf) 
-On the ability of untrained feedforward neural networks to linearly separate two datasets<br>
-With Weitao Zhu and Harold Haodong Miao<br>
-EECS 6699: Mathematics of Deep Learning<br>
-*Published May 9th, 2023*
-
 ## 2022
 ### [Trading in the Limit Order Book with CNN-LSTM](/blog/CNN-LSTM-LOB/)
 Using deep learning to extract order flow information from the limit order book and forecast directional moves<br>
