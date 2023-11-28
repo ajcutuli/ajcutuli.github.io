@@ -7,5 +7,5 @@ author_profile: true
 
 {% include base_path %}
 
-### Teaching Assistant
+### Course Assistant
 * IEOR 4733: Algorithmic Trading - Spring 2023
