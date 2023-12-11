@@ -13,6 +13,6 @@ redirect_from:
 
 **Hello!**
 ---
-My name is Aric. My research interests intersect uncertainty quantification, reinforcement learning, stochastic control, mathematical finance, game theory, and decision theory.
+My name is Aric. I am an incoming quantitative analyst at Citigroup. My research interests intersect uncertainty quantification, reinforcement learning, stochastic control, mathematical finance, game theory, and decision theory.
 
 Here is my full [CV](/files/Cutuli_CV.pdf).
