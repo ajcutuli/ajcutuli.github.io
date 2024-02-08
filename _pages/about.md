@@ -15,4 +15,4 @@ redirect_from:
 ---
 My name is Aric. I am an incoming quantitative analyst at Citigroup.
 
-Here is my full [CV](/files/Cutuli_CV.pdf).
+<!-- Here is my full [CV](/files/Cutuli_CV.pdf). -->
