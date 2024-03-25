@@ -1,13 +1,13 @@
 # main links
 main:
-  - title: "Research"
-    url: /research/
-  - title: "Blog"
-    url: /blog/
-  - title: "Teaching"
-    url: /teaching/
-  - title: "Movie Talk"
-    url: /movies/
+  # - title: "Research"
+  #   url: /research/
+  # - title: "Blog"
+  #   url: /blog/
+  # - title: "Teaching"
+  #   url: /teaching/
+  # - title: "Movie Talk"
+  #   url: /movies/
 
     
     

@@ -1,6 +1,6 @@
 ---
 layout: archive
-permalink: /blog/CNN-LSTM-LOB/
+permalink: /OrderBookDeepLearning/
 author_profile: true
 title: "Trading in the Limit Order Book with CNN-LSTM"
 ---
