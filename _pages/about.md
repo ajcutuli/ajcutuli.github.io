@@ -3,25 +3,22 @@ permalink: /
 title: ""
 excerpt: ""
 header:
-   overlay_image: "http://ajcutuli.github.io/images/newyork.jpg"
-   overlay_filter: 0.0
+  #  overlay_image: "http://ajcutuli.github.io/images/newyork.jpg"
+  #  overlay_filter: 0.0
 author_profile: true
 redirect_from: 
-  - /about/
-  - /about.html 
+  # - /about/
+  # - /about.html 
 ---
 
 ## About
----
 I am an incoming quantitative analyst at Citigroup.
 
 ## Education
----
 * M.S. in Financial Engineering, Columbia University, 2023
 * B.S in Math/Economics + Specialization in Computing, University of California, Los Angeles, 2022
 
 ## Working Papers
----
 A Bayesian Hierarchical Framework for Modeling Migration Flows <br>
 (with Upmanu Lall, Michael J. Puma, Emile Esmaili, Rachata Muneepeerakul)<br>
 This version: December 2023.
@@ -31,7 +28,6 @@ Modeling Migration Flows with Non-Homogeneous Hidden Markov Models <br>
 This version: December 2023.
 
 ## Teaching
----
 * Course Assistant, IEOR 4733: Algorithmic Trading - Spring 2023
 
 Currently tutoring graduate and undergraduate students in Monte Carlo simulations, time series analysis, stochastic processes.
