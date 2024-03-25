@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Aric Cutuli"
+title                    : "Aric Cutuli's Site"
 title_separator          : "-"
 name                     : &name "Aric Cutuli"
 description              : &description "Data Science"
@@ -82,7 +82,7 @@ analytics:
 author:
   name             : "Aric Cutuli"
   avatar           : "profile.jpeg"
-  bio              : "Learning and watching movies"
+  bio              : 
   location         : "New York, NY"
   employer         :
   pubmed           : 
