@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Aric Cutuli's Site"
+title                    : "Aric Cutuli"
 title_separator          : "-"
 name                     : &name "Aric Cutuli"
 description              : &description "Data Science"
