@@ -21,7 +21,7 @@ Quantitative analyst at Citigroup
 ## Working Papers
 **A Bayesian Hierarchical Framework for Modeling Migration Flows** <br>
 (with [Upmanu Lall](https://search.asu.edu/profile/4823918), [Michael J. Puma](https://people.climate.columbia.edu/users/profile/michael-joseph-puma), [Emile Esmaili](https://emiledesmaili.github.io), [Rachata Muneepeerakul](https://abe.ufl.edu/people/faculty/rachata-muneepeerakul/))<br>
-Version: December 2023.
+Version: May 2024.
 <details>
 <summary>Abstract</summary>
 <br>
@@ -39,8 +39,8 @@ Current models of human mobility rely on static models inferred using multivaria
 </details>
 
 ## Teaching
-Currently tutoring graduate students in Monte Carlo simulations and stochastic processes.
-* Course Assistant, IEOR 4733: Algorithmic Trading - Spring 2023
+**Freelance** | Tutor, Monte Carlo simulations and stochastic processes<br>*Mar 2023 - May 2023*<br><br>
+**Columbia University** | Course Assistant, Algorithmic Trading<br>*Jan 2023 - May 2023*
 
 ## Coding and Writing
 <!-- * [My Favorite Class at Columbia](/ColumbiaFavoriteClass/)<br>
