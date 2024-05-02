@@ -12,11 +12,11 @@ redirect_from:
 ---
 
 ## About
-I am an incoming quantitative analyst at Citigroup.
+Quantitative analyst at Citigroup
 
 ## Education
-* M.S. in Financial Engineering, Columbia University, 2023
-* B.S. in Math/Economics + Computing, University of California, Los Angeles, 2022
+**Columbia University** | M.S. in Financial Engineering<br>*Sep 2022 - Dec 2023*<br><br>
+**University of California, Los Angeles** | B.S. in Computational Math and Economics<br>*Sep 2019 - Jun 2022*
 
 ## Working Papers
 **A Bayesian Hierarchical Framework for Modeling Migration Flows** <br>
@@ -39,7 +39,7 @@ Current models of human mobility rely on static models inferred using multivaria
 </details>
 
 ## Teaching
-Currently tutoring graduate and undergraduate students in Monte Carlo simulations, time series analysis, stochastic processes.
+Currently tutoring graduate students in Monte Carlo simulations and stochastic processes.
 * Course Assistant, IEOR 4733: Algorithmic Trading - Spring 2023
 
 ## Coding and Writing
