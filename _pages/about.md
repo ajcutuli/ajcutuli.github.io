@@ -39,7 +39,7 @@ Current models of human mobility rely on static models inferred using multivaria
 </details>
 
 ## Teaching
-**Freelance** | Tutor, Monte Carlo simulations and stochastic processes<br>*Mar 2023 - May 2023*<br><br>
+**Freelance** | Tutor, Monte Carlo simulations and stochastic processes<br>*Feb 2024 - May 2024*<br><br>
 **Columbia University** | Course Assistant, Algorithmic Trading<br>*Jan 2023 - May 2023*
 
 ## Coding and Writing
