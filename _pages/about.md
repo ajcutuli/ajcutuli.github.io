@@ -19,7 +19,7 @@ Quantitative analyst at Citigroup
 **University of California, Los Angeles** | B.S. in Computational Math and Economics<br>*Sep 2019 - Jun 2022*
 
 ## Working Papers
-**A Bayesian Hierarchical Framework for Modeling Migration Flows** <br>
+**A Bayesian Hierarchical Framework for Capturing Preference Heterogeneity in Migration Flows** <br>
 (with [Upmanu Lall](https://search.asu.edu/profile/4823918), [Michael J. Puma](https://people.climate.columbia.edu/users/profile/michael-joseph-puma), [Emile Esmaili](https://emiledesmaili.github.io), [Rachata Muneepeerakul](https://abe.ufl.edu/people/faculty/rachata-muneepeerakul/))<br>
 Version: May 2024.
 <details>
