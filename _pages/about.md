@@ -43,8 +43,8 @@ Current models of human mobility rely on static models inferred using multivaria
 **Columbia University** | Course Assistant, Algorithmic Trading<br>*Jan 2023 - May 2023*
 
 ## Coding and Writing
-<!-- * [My Favorite Class at Columbia](/ColumbiaFavoriteClass/)<br>
-Talking about stochastic control, reinforcement learning, and the challenges of giving my first lecture -->
+* [Reinforcement Learning for Continuous-Time Optimal Execution](/files/CTRL_Optimal_Execution.pdf)<br>
+Slides from a lecture I gave for a reading group at Columbia on stochastic control and reinforcement learning
 * [Hawkes Processes and Time Clustering in Finance](/Hawkes/)<br>
 Brief discussion on Hawkes processes, a class of self-exciting point processes
 * [Separation Capacity of Randomly Initialized Deep Neural Networks.](/files/Separation_Capacity.pdf)<br>
