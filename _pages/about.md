@@ -12,7 +12,7 @@ redirect_from:
 ---
 
 ## About
-Quantitative analyst at Citigroup
+I'm currently employed at Citigroup as a quantitative analyst  within the credit algorithmic trading business. Previously, as a graduate student at Columbia University, I researched applications of Bayesian statistics in population dynamics under the supervision of [Upmanu Lall](https://search.asu.edu/profile/4823918) and [Michael J. Puma](https://people.climate.columbia.edu/users/profile/michael-joseph-puma). As an undergraduate at UCLA, I studied advances in machine learning for market microstrure under the mentorship of [Moritz Voss](https://sites.google.com/view/moritzvoss).
 
 ## Education
 **Columbia University** | M.S. in Financial Engineering<br>*Sep 2022 - Dec 2023*<br><br>
