@@ -31,11 +31,13 @@ Using deep learning to extract order flow information from the limit order book 
 ## Conference Abstracts
 **A Bayesian Hierarchical Framework for Capturing Preference Heterogeneity in Migration Flows** <br>
 (with [Upmanu Lall](https://search.asu.edu/profile/4823918), [Michael J. Puma](https://people.climate.columbia.edu/users/profile/michael-joseph-puma), [Emile Esmaili](https://emiledesmaili.github.io), [Rachata Muneepeerakul](https://abe.ufl.edu/people/faculty/rachata-muneepeerakul/))<br>
-AGU Fall Meeting Abstracts 2023 (1149), GC31I-1149. [[abstract]](https://ui.adsabs.harvard.edu/abs/2023AGUFMGC31I1149C/abstract)
+AGU Fall Meeting Abstracts 2023 (1149), GC31I-1149. <br>
+[[abstract]](https://ui.adsabs.harvard.edu/abs/2023AGUFMGC31I1149C/abstract)
 
 **Modeling Migration Flows with Non-Homogeneous Hidden Markov Models** <br>
 (with [Emile Esmaili](https://emiledesmaili.github.io), [Upmanu Lall](https://search.asu.edu/profile/4823918), [Michael J. Puma](https://people.climate.columbia.edu/users/profile/michael-joseph-puma), [Rachata Muneepeerakul](https://abe.ufl.edu/people/faculty/rachata-muneepeerakul/)) <br>
-AGU Fall Meeting Abstracts 2023 (115), GC31I-115. [[abstract]](https://ui.adsabs.harvard.edu/abs/2023AGUFMGC31I11.5E/abstract)
+AGU Fall Meeting Abstracts 2023 (115), GC31I-115. <br>
+[[abstract]](https://ui.adsabs.harvard.edu/abs/2023AGUFMGC31I11.5E/abstract)
 
 <!-- ## Education
 **Columbia University** | M.S. in Financial Engineering<br>*Sep 2022 - Dec 2023*<br><br>
