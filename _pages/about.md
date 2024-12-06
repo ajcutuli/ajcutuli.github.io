@@ -28,29 +28,3 @@ Technical report written for EECS 6699: Mathematics of Deep Learning, with Harol
 *Jul 2022*<br>
 Using deep learning to extract order flow information from the limit order book and forecast directional moves<br>
 
-## Conference Abstracts
-**A Bayesian Hierarchical Framework for Capturing Preference Heterogeneity in Migration Flows** <br>
-(with [Upmanu Lall](https://search.asu.edu/profile/4823918), [Michael J. Puma](https://people.climate.columbia.edu/users/profile/michael-joseph-puma), [Emile Esmaili](https://emiledesmaili.github.io), [Rachata Muneepeerakul](https://abe.ufl.edu/people/faculty/rachata-muneepeerakul/))<br>
-AGU Fall Meeting Abstracts 2023 (1149), GC31I-1149. <br>
-[[abstract]](https://ui.adsabs.harvard.edu/abs/2023AGUFMGC31I1149C/abstract)
-
-**Modeling Migration Flows with Non-Homogeneous Hidden Markov Models** <br>
-(with [Emile Esmaili](https://emiledesmaili.github.io), [Upmanu Lall](https://search.asu.edu/profile/4823918), [Michael J. Puma](https://people.climate.columbia.edu/users/profile/michael-joseph-puma), [Rachata Muneepeerakul](https://abe.ufl.edu/people/faculty/rachata-muneepeerakul/)) <br>
-AGU Fall Meeting Abstracts 2023 (115), GC31I-115. <br>
-[[abstract]](https://ui.adsabs.harvard.edu/abs/2023AGUFMGC31I11.5E/abstract)
-
-<!-- ## Education
-**Columbia University** | M.S. in Financial Engineering<br>*Sep 2022 - Dec 2023*<br><br>
-**University of California, Los Angeles** | B.S. in Computational Math and Economics<br>*Sep 2019 - Jun 2022*
-
-## Teaching
-**Freelance** | Tutor, Monte Carlo simulations and stochastic processes<br>*Feb 2024 - May 2024*<br><br>
-**Columbia University** | Course Assistant, Algorithmic Trading<br>*Jan 2023 - May 2023* -->
-
-## Movie Talk
-<!-- If I'm not at the desk, I'm probably at the Lincoln Square movie theater. I'm a loyal AMC Stubs A-Lister and a self-proclaimed critic on [Letterboxd](https://letterboxd.com/ajcutuli/). -->
-Follow me on [Letterboxd](https://letterboxd.com/ajcutuli/).
-
-
-
-<!-- Here is my full [CV](/files/Cutuli_CV.pdf). -->
