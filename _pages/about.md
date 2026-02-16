@@ -14,8 +14,7 @@ redirect_from:
 <!-- ## About
 I'm currently employed as a systematic trader and researcher of securitized products. Previously, as a graduate student at Columbia University, I researched Bayesian inference and population dynamics under the supervision of [Upmanu Lall](https://search.asu.edu/profile/4823918) and [Michael J. Puma](https://people.climate.columbia.edu/users/profile/michael-joseph-puma). As an undergraduate at UCLA, I studied advances in machine learning for market microstrure under the mentorship of [Moritz Voss](https://sites.google.com/view/moritzvoss). -->
 
-<!-- ## Quantitative Discussions -->
-## Recent Posts
+## Quantitative Discussions
 * [Reinforcement Learning for Continuous-Time Optimal Execution](quant/CTRL_Optimal_Execution.pdf)<br>
 *Dec 2023*<br>
 Slides from a lecture I gave for a reading group at Columbia on stochastic control and reinforcement learning
@@ -29,5 +28,5 @@ Technical report written for EECS 6699: Mathematics of Deep Learning, with Harol
 *Jul 2022*<br>
 Using deep learning to extract order flow information from the limit order book and forecast directional moves<br>
 
-<!-- ## Mini Essays -->
+## Mini Essays
 
