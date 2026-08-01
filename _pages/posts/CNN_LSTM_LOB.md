@@ -3,6 +3,7 @@ layout: archive
 permalink: /OrderBookDeepLearning/
 author_profile: true
 title: "Trading in the Limit Order Book with CNN-LSTM"
+mathjax_numbering: false
 ---
 
 {% include base_path %}
@@ -65,7 +66,8 @@ Our data-scraping method pulls live order book state information for Bitcoin tra
 We adopt a Box-Jenkins approach to modeling the time series by first recognizing the vector autoregressive (VAR) nature of the process to infer how long our LSTM lookback window should be. We then cross-validate hyperparameters and subsequently train the model.
 
 ### VAR Order Selection
-To select optimal lags, we iteratively fit order flow and imbalance data as VAR models with an increasing estimate for the order $p$ and selecting the estimate $\hat{p}$ that minimizes Akaike information criteria (AIC). This, however, does not guarantee that the deep learning model does not underfit the data.
+To select optimal lags, we iteratively fit order flow and imbalance data as VAR models with an increasing estimate for the order $p$ and selecting the estimate 
+$\hat{p}$ that minimizes Akaike information criteria (AIC). This, however, does not guarantee that the deep learning model does not underfit the data.
 
 ### Dropout Tuning with Cross-Validated Grid-Search
 After properly scaling and tensorizing our data, we apply time series cross-validated grid-search to assess the bias-variance tradeoff of selecting different hyperparameters. As advocated for in BDLOB[<sub>[2]</sub>](#ref2), we employ variational dropout as a stochastic regularizer in the deep neural network and exhaustively compare scoring over several different dropout rates. We apply early stopping to avoid overfitting by terminating training when validation loss has not improved for 5 consecutive epochs[<sub>[4]</sub>](#ref4).
@@ -74,7 +76,8 @@ After properly scaling and tensorizing our data, we apply time series cross-vali
 After training the models, we use MC dropout to better approximate the conditional expectations at each out-of-sample observation by performing 100 forward passes on each model and storing the average. That is, as the number of out-of-sample predictions we execute grows very large, the average across those predictions will approach the true conditional probability of an outcome given the training data.
 
 ## Building a Trading Signal
-We compare two trading strategies using our test set as the trading period. We ignore transaction costs and close positions at the end of the trading period. For each timestamp we trade at, we go long or short $\mu$ Bitcoins, where $\mu$ is 30% of the volume at the first ask or bid level we enter at, respectively[<sub>[2]</sub>](#ref2).
+We compare two trading strategies using our test set as the trading period. We ignore transaction costs and close positions at the end of the trading period. For each timestamp we trade at, we go long or short $\mu$ Bitcoins, where 
+$\mu$ is 30% of the volume at the first ask or bid level we enter at, respectively[<sub>[2]</sub>](#ref2).
 
 ### Softmax Trading Strategy
 For this strategy, we choose a threshold probability $\alpha$ and go long if 
@@ -86,7 +89,11 @@ $ \hat p_{-1,t} $ is the predicted probability of a downward move at time
 $ t $. Only one position is allowed at any time. We store the cumulative profits and their ratios to transaction volume for a few threshold values.
 
 ### Bayesian Trading Strategy
-To leverage uncertainty information, we use *predictive entropy* to summarize classification uncertainty due to variational dropout[<sub>[2]</sub>](#ref2). The metric of predictive entropy $\mathbb{H}$ follows from our aforementioned understanding of conditional expectation by making use of the predictive distribution captured by our 100 forward passes from earlier. For an input $ x_t$, a predicted output $y_t$, training data $\mathcal{D}_{\text{train}}$, and estimated model parameters $\hat{w}$, we define predictive entropy by
+To leverage uncertainty information, we use *predictive entropy* to summarize classification uncertainty due to variational dropout[<sub>[2]</sub>](#ref2). The metric of predictive entropy $\mathbb{H}$ 
+follows from our aforementioned understanding of conditional expectation by making use of the predictive distribution captured by our 100 forward passes from earlier. For an input $ x_t$, a predicted output 
+$y_t$, training data 
+$\mathcal{D}_{\text{train}}$, and estimated model parameters 
+$\hat{w}$, we define predictive entropy by
 
 $$
 \begin{equation*}
@@ -98,15 +105,37 @@ $$
 \end{equation*}
 $$
 
-Essentially, $ j$ iterates over each class and summarizes the average level of uncertainty for outcomes of that class. The function is minimized when the model is certain––when one class has probability 1 and all others are 0. The function is maximized when the model is very uncertain––probability is uniform across the classes. Also observe that our earlier notation $\hat p_{j,t}$ is shorthand for $\frac{1}{100} \sum_{k=1}^{100} p(y_t=j \mid x_t,\hat w)$.
+Essentially, $ j$ iterates over each class and summarizes the average level of uncertainty for outcomes of that class. The function is minimized when the model is certain––when one class has probability 1 and all others are 0. The function is maximized when the model is very uncertain––probability is uniform across the classes. Also observe that our earlier notation $\hat p_{j,t}$ is shorthand for 
+$\frac{1}{100} \sum_{k=1}^{100} p(y_t=j \mid x_t,\hat w)$.
 
-Using this metric, we upsize our positions if our model is certain and downsize our positions if the model is uncertain. 
-More specifically, we still go long or short if $\hat{p}_{1,t} > \alpha$ or $\hat{p}_{-1,t} > \alpha$, respectively, but we upsize our positions to $1.5 \times \mu$ if $\tilde{\mathbb H}_t < \beta _1$, keep our size $\mu$ if $\beta_1< \tilde{\mathbb H}_t < \beta_2$, downsize to $0.5 \times \mu$ if $\tilde{\mathbb H}_t > \beta_2$, and exit the current position if $\tilde{\mathbb H}_t < \beta_2$[<sub>[2]</sub>](#ref2). We fix values for $\alpha$ and $\beta_2$ and test different values for $\beta_1$.
+Using this metric, we upsize our positions if our model is certain and downsize our positions if the model is uncertain.[<sub>[2]</sub>](#ref2) 
+More specifically, we still go long or short if 
+$\hat{p}_{1,t} > \alpha$ or 
+$\hat{p}_{-1,t} > \alpha,$ respectively, but we upsize our positions to 
+$1.5 \times \mu$ if 
+$\tilde{\mathbb H}_t < \beta _1,$
+keep our size $\mu$ if 
+$\beta_1< \tilde{\mathbb H}_t < \beta_2,$ downsize to 
+$0.5 \times \mu$ if 
+$\tilde{\mathbb H}_t > \beta_2,$ and exit the current position if 
+$\tilde{\mathbb H}_t < \beta_2.$
+
+We fix values for $\alpha$ and 
+$\beta_2$ and test different values for 
+$\beta_1$.
 
 ### Results
 Now comes the question of how we should compare these strategies in terms of profit and risk. 
 
-Since each strategy returns different transaction volumes, we standardize profits to properly compare profitability. And while the Sharpe ratio is a popular measure of risk in a portfolio or strategy, it deems large positive and negative returns to be equally risky, so we follow BDLOB[<sub>[2]</sub>](#ref2) in using the Downward Deviation ratio $$\text{DDR} = \frac{\mathbb{E}(R_t)}{\text{DD}_T}$$ as our risk measure, where $\mathbb{E}(R_t)$ is the average return per timestamp and $$\text{DD}_T = \sqrt{\frac{1}{T} \sum_{t=1}^T \text{min}(R_t,0)^2}$$ measures the deviation of negative returns. DDR has the desired property of penalizing negative returns and rewarding positive returns.
+Since each strategy returns different transaction volumes, we standardize profits to properly compare profitability. And while the Sharpe ratio is a popular measure of risk in a portfolio or strategy, it deems large positive and negative returns to be equally risky, so we follow BDLOB[<sub>[2]</sub>](#ref2) in using the Downward Deviation ratio 
+
+$$\text{DDR} = \frac{\mathbb{E}(R_t)}{\text{DD}_T}$$ 
+
+as our risk measure, where $\mathbb{E}(R_t)$ is the average return per timestamp and 
+
+$$\text{DD}_T = \sqrt{\frac{1}{T} \sum_{t=1}^T \text{min}(R_t,0)^2}$$ 
+
+measures the deviation of negative returns. DDR has the desired property of penalizing negative returns and rewarding positive returns.
 
 Unfortunately, the models were both very poor in their ability to generate profits, but this should come as no surprise. Recall that our models predict downward moves almost identically poorly, so it is reasonable to believe that the model is doomed to behave poorly in a downward trending regime. And since the Bitcoin mid price dropped 1% over the duration of the trading period, our understanding of the model justify the results we see.
 
@@ -115,17 +144,28 @@ Although the losses are very disappointing, we still observe steadiness in the B
 Proper downsampling would have been a nice add in our training procedure in order to help our model better predict the downward moves that were observed in the out-of-sample data.
 
 # Model Diagnostics
-In acccordance with the Box-Jenkins approach, we test the fitted models' residuals $\{ \hat{u}_i \}_{i=1}^T$ for any autocorrelation. If true, there is statistical evidence that the model is underfitting, and we should increase the lag parameter of our sequential model and re-train. If false, we accept the model residuals to be white noise. 
+In acccordance with the Box-Jenkins approach, we test the fitted models' residuals 
+$\{ \hat{u}_i \}_{i=1}^T$ for any autocorrelation. If true, there is statistical evidence that the model is underfitting, and we should increase the lag parameter of our sequential model and re-train. If false, we accept the model residuals to be white noise. 
 
-We compute our residuals as the cross-entropy of the classification problem at each timestamp, which we define by $$\hat u_i=-\sum_{j=-1}^1y_i(j)\log\hat y_i(j)$$ for $ i \in \{1,...,T\}$, where $y_i$ is the one-hot encoded 3-variable vector of the true 1-step movement, $\hat{y}_i$ is our model's unrounded prediction of that encoding, and $T$ is the number of observations.
+We compute our residuals as the cross-entropy of the classification problem at each timestamp, which we define by 
+
+$$\hat u_i=-\sum_{j=-1}^1y_i(j)\log\hat y_i(j)$$ 
+
+for $ i \in \{1,...,T\}$, where 
+$y_i$ is the one-hot encoded 3-variable vector of the true 1-step movement, 
+$\hat{y}_i$ is our model's unrounded prediction of that encoding, and 
+$T$ is the number of observations.
 
 Letting 
 $\hat{\tau}_i$ be the sample autocorrelations of the residuals and $m$ to be a maximum lag to test, we use the Ljung-Box statistic
+
 $$ Q(m) = T(T+2)\sum_{l=1}^{m}\frac{\hat{\tau}_l^2}{T-l} $$
+
 as our test statistic for the null hypothesis 
 $H_0: \tau_1=...=\tau_m=0$ versus the alternative 
 $H_a: \tau_i \neq 0$ for some 
-$i \in \{1,...,m\}$. For large $T$, the statistic is chi-squared distributed with $m$ degrees of freedom, and we reject the null in favor of the alternative if the test statistic is greater than the critical value of the corresponding chi-squared distribution at the 99% confidence level. 
+$i \in \{1,...,m\}$. 
+For large $T$, the statistic is chi-squared distributed with $m$ degrees of freedom, and we reject the null in favor of the alternative if the test statistic is greater than the critical value of the corresponding chi-squared distribution at the 99% confidence level. 
 
 We unfortunately found evidence supporting the conclusion that both models underfit the training data, so increasing the lag parameter and redoing the training and diagnostics until we no longer underfit would be a necessary next step, but we omit it for brevity. Also, Kolm et al[<sub>[4]</sub>](#ref4) found that different choices for the lag parameter had little impact on the performance of the CNN-LSTM model for their regression problem, so perhaps this is as good as we can get. And as a third point, the fact that the model is underfitting should come as no surprise, since this really tells us that our model is too simple for the data. Financial data, even such stationary processes as order flow and order flow imbalance, are incredibly complex, so it's hard to expect any interpretable model to well-fit the input data. In this truth lies one of the problems of deep learning in finance.
 
