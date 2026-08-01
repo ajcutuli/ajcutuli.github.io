@@ -34,14 +34,7 @@ The first loading never changes sign.
 The second changes sign exactly once.
 
 The third changes sign exactly twice.
-<!-- PC1    + + + + + + + +
-          ↑ 0 crossings
 
-PC2    - - - - + + + +
-              ↑ 1 crossing
-
-PC3    + + - - - + + +
-          ↑     ↑ 2 crossings -->
 Fixed-income practitioners have long interpreted these as the level, slope, and curvature [factors](https://math.nyu.edu/inmemoriam/avellaneda//Litterman1991.pdf) of the curve.
 But that interpretation doesn’t answer the mathematical question. 
 Why should the first loading have no sign changes, the second exactly one, and the third exactly two?
@@ -56,33 +49,43 @@ Perhaps there is something inherent in the optimization problem that forces succ
 To investigate that possibility, let’s briefly strip away the financial interpretation and recall what PCA is actually doing.
 
 Suppose we observe a random vector
+
 $$
 X =
 \begin{pmatrix}
 X_1 \\ X_2 \\ \vdots \\ X_n
 \end{pmatrix},
 $$
+
 with covariance matrix
+
 $$
 \Sigma = \operatorname{Cov}(X).
 $$
+
 PCA seeks the direction $v$ along which the projected data exhibits the greatest variance. 
 Equivalently, it solves the optimization problem
+
 $$
 \max_{\|v\|=1} v^\top \Sigma v.
 $$
+
 The quantity
+
 $$
 R(v)
 =
 \frac{v^\top \Sigma v}
      {v^\top v},
 $$
+
 known as the [Rayleigh quotient](https://en.wikipedia.org/wiki/Rayleigh_quotient), measures the variance explained by projecting onto the direction $v$.
 Maximizing this quotient leads directly to the familiar eigenvalue problem
+
 $$
 \Sigma v = \lambda v,
 $$
+
 whose solutions are the principal components.
 <!-- Throughout the remainder of this essay we will work only with the numerator $v^\top\Sigma v$, since PCA restricts attention to unit vectors. -->
 
@@ -181,7 +184,9 @@ Rather than asking _what does PCA do?_, we should instead ask _what is so specia
 The first clue comes from a theorem that predates PCA by several decades.
 
 Suppose our covariance matrix has strictly positive entries,
+
 $$\Sigma_{ij}>0.$$
+
 This is hardly an unreasonable assumption for the yield curve. 
 Nearby maturities almost always move together, and even distant maturities tend to respond in the same direction to broad macroeconomic shocks. 
 The covariance matrix is therefore not merely positive semidefinite—as every covariance matrix must be—but approximately entrywise positive.
@@ -204,9 +209,11 @@ The theorem is elegant, but it can also feel a little magical.
 Fortunately, the Rayleigh quotient offers a more intuitive explanation.
 
 Recall that the first principal component maximizes
+
 $$
 v^\top \Sigma v= \sum_{i,j} v_i\Sigma_{ij}v_j
 $$
+
 over the search space $\|v\|=1$.
 
 Because every covariance term is positive, two variables carrying the same sign reinforce one another. 
@@ -242,18 +249,22 @@ Fortunately, PCA does.
 
 By construction, every principal component after the first must be orthogonal to all those that came before it. 
 In particular,
+
 $$
 v_2^\top v_1 = 0.
 $$
+
 At first this appears to be little more than a technical constraint. 
 In reality, it completely changes the geometry of the problem.
 
 We have already established that every entry of $v_1$ is strictly positive. 
 Suppose, for the sake of argument, that the second eigenvector were also strictly positive. 
 Then every term in the inner product
+
 $$
 v_2^\top v_1 = \sum_{i=1}^n v_{2,i}v_{1,i}
 $$
+
 would itself be positive, making the sum strictly positive.
 
 That is impossible.
@@ -267,7 +278,8 @@ Somewhere, it must cross zero.
 This is our first explanation for oscillation.
 
 $$
-v_2^\top v_1 = 0 ~~~~~~\implies~~~~~~\begin{aligned}
+v_2^\top v_1 = 0 ~~~~~~\implies~~~~~~
+\begin{aligned}
 + + + + + + + +      &~~~~~~~~~~\text{PC1}\\
 - - - - + + + +      &~~~~~~~~~~\text{PC2}
 \end{aligned}
@@ -285,9 +297,11 @@ Orthogonality forces the second eigenvector to change sign.
 It does not explain why it changes sign exactly once.
 
 Nothing prevents a vector such as
+
 $$
 + - + - + - + -
 $$
+
 from being perfectly orthogonal to the first eigenvector.
 
 Indeed, infinitely many sign-changing vectors satisfy the orthogonality constraint.
@@ -301,9 +315,11 @@ That question cannot be answered by orthogonality alone.
 Orthogonality leaves us with an enormous amount of freedom.
 The second principal component could divide the curve cleanly into a short-end and a long-end. 
 But it could just as easily alternate signs at every maturity,
+
 $$
 + - + - + - + -
 $$
+
 or exhibit any number of more complicated oscillatory patterns.
 All of these vectors can be made orthogonal to the first principal component.
 
@@ -312,9 +328,11 @@ So why does PCA consistently choose the smoothest one?
 The answer lies not in the orthogonality constraint, but in the quantity being maximized.
 
 Again, recall that every principal component maximizes 
+
 $$
 v^\top \Sigma v = \sum_{i,j} v_i\Sigma_{ij}v_j.
 $$
+
 Unlike the previous section, we now need to think carefully about what each of these terms means.
 
 The covariance matrix of the yield curve is not merely positive. 
@@ -327,9 +345,13 @@ In other words, the covariance matrix has a strong local structure.
 Now imagine placing opposite signs on two neighboring maturities.
 
 Because those maturities possess large positive covariance,
+
 $$\Sigma_{ij}>0,$$
+
 their contribution to the Rayleigh quotient becomes
+
 $$v_i\Sigma_{ij}v_j<0.$$
+
 Instead of reinforcing one another, they begin cancelling each other out.
 
 Every unnecessary sign change therefore destroys explained variance. 
@@ -365,9 +387,11 @@ A yield curve is more naturally viewed as a function of maturity,
 $$
 y_t(\tau),
 $$
+
 where $t$ denotes time and $\tau$ denotes maturity.
 
 Its daily change is therefore another function,
+
 $$
 X_t(\tau)=\Delta y_t(\tau).
 $$
@@ -375,17 +399,21 @@ $$
 In practice, we observe this function only at a finite grid of maturities: one year, two years, five years, ten years, and so on. But the underlying economic object is continuous. The eight-dimensional vector used in our PCA is only a discretized picture of a curve.
 
 Once we take that perspective seriously, the covariance matrix becomes a covariance kernel,
+
 $$
 K(s,\tau)=\operatorname{Cov}\bigl(X_t(s),X_t(\tau)\bigr).
 $$
+
 Rather than asking how two columns of a dataset covary, we can ask how shocks at any two maturities $s$ and $\tau$ move together.
 
 This kernel defines an operator acting on functions:
+
 $$
 (\mathcal{K}\phi)(s)=\int_a^b K(s,\tau)\phi(\tau)d\tau.
 $$
 
 The functional version of PCA then asks for functions $\phi_k$ satisfying
+
 $$
 \mathcal{K}\phi_k =\lambda_k\phi_k.
 $$
@@ -394,11 +422,13 @@ These _eigenfunctions_ are the continuous analogues of the PCA loading vectors.
 Instead of assigning a loading to each observed maturity, they assign a loading to every point along the curve.
 
 The yield-curve change can then be expanded as
+
 $$
 X_t(\tau)=
 \sum_{k=1}^{\infty}
 Z_{t,k}\phi_k(\tau),
 $$
+
 where the coefficients $Z_{t,k}$ are uncorrelated random variables and the functions $\phi_k$ form an orthogonal basis.
 
 This is the [Karhunen-Loève expansion](https://en.wikipedia.org/wiki/Karhunen%E2%80%93Lo%C3%A8ve_theorem): PCA for random functions.
@@ -444,15 +474,19 @@ The loading vectors of the yield curve appear to follow precisely the same progr
 This is no coincidence.
 
 The normal modes of a vibrating string arise as eigenfunctions of a differential operator. Specifically, they satisfy the [Sturm-Liouville problem](https://en.wikipedia.org/wiki/Sturm%E2%80%93Liouville_theory)
+
 $$
 -\frac{d^2\phi}{dx^2}=\mu\phi,
 $$
+
 subject to the appropriate boundary conditions.
 
 The resulting eigenfunctions are
+
 $$
 \phi_n(x)=\sin(n\pi x),
 $$
+
 whose oscillatory structure is immediately apparent.
 
 The first eigenfunction has no interior zero.
