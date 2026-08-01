@@ -5,6 +5,7 @@ header-includes:
     - \usepackage{bbm}
 author_profile: true
 title: "The Harmonics of the Yield Curve"
+mathjax_numbering: false
 ---
 
 {% include base_path %}
