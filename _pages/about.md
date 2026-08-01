@@ -17,7 +17,7 @@ I'm currently employed as a systematic trader and researcher of securitized prod
 ## Posts
 * [The Harmonics of the Yield Curve](/YieldCurvePCA/)<br>
 *Aug 2026*<br>
-Studying the question: "Why does PCA on the yield curve look like that?"
+A geometric interpretation of principal component analysis on the Treasury yield curve
 * [Reinforcement Learning for Continuous-Time Optimal Execution](posts/CTRL_Optimal_Execution.pdf)<br>
 *Dec 2023*<br>
 Slides from a lecture I gave for a reading group at Columbia on stochastic control and reinforcement learning
