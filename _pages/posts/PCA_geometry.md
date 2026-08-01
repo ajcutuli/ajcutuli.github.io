@@ -360,6 +360,7 @@ The optimization naturally avoids this.
 Given two vectors that both satisfy the orthogonality constraint, the one with fewer sign reversals preserves more of the positive covariance structure and therefore achieves a larger Rayleigh quotient.
 
 Smoothness wins.
+
 <!-- insert image of yield curve PC2 versus a more oscillatory alternative -->
 <img src="../../images/PCA_geometry/smooth_vs_oscillatory_loadings.png" width="500">
 
@@ -611,6 +612,7 @@ A liquidity shock concentrated in the long end of the curve, an abrupt repricing
 In such environments, additional oscillation is not surprising. 
 It is exactly what the theory predicts once smoothness begins to disappear.
 <!-- Insert discussion and plot of PC roughness -->
+
 <img src="../../images/PCA_geometry/rolling_pc2_geometry.gif" width="500">
 
 Perhaps the most important lesson, however, is conceptual.
