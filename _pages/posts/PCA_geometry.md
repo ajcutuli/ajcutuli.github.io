@@ -68,7 +68,7 @@ PCA seeks the direction $v$ along which the projected data exhibits the greatest
 Equivalently, it solves the optimization problem
 
 $$
-\max_{\|v\|=1} v^\top \Sigma v.
+\max_{\lVert v \rVert=1} v^\top \Sigma v.
 $$
 
 The quantity
@@ -215,7 +215,7 @@ $$
 v^\top \Sigma v= \sum_{i,j} v_i\Sigma_{ij}v_j
 $$
 
-over the search space $\|v\|=1$.
+over the search space $\lVert v \rVert=1$.
 
 Because every covariance term is positive, two variables carrying the same sign reinforce one another. 
 Assigning opposite signs causes those same covariance terms to subtract instead.
