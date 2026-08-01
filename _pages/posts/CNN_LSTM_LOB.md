@@ -20,33 +20,43 @@ An order is defined by its side, quantity demanded, price to trade at, and time 
 
 We pass into our model representations of the first ten levels of the order book. Each observation in our dataset will be a 40-variable vector displaying the price and volume for each of the top ten bids and asks, giving us a truncated screenshot of the *state of the limit order book* at each timestep.
 
-$$ \begin{equation*} \text{s}_t^{LOB} := (a_t^1, v_t^{1,a}, b_t^1, v_t^{1,b}, ..., a_t^{10}, v_t^{10,a}, b_t^{10}, v_t^{10,b})^T \in \mathbb{R}^{40} \end{equation*} $$
+$$
+\text{s}_t^{LOB} := (a_t^1, v_t^{1,a}, b_t^1, v_t^{1,b}, ..., a_t^{10}, v_t^{10,a}, b_t^{10}, v_t^{10,b})^T \in \mathbb{R}^{40}
+$$
 
 We define the *bid order flows* (bOF) and *ask order flows* (aOF) at a timestamp to be 10-variable vectors computed using two consecutive order book states, where each element is given by
 
-$$ \text{bOF}_{t,i} :=   \left\{
+$$
+\text{bOF}_{t,i} :=   \left\{
 \begin{array}{ll}
       v_t^{i,b}, & b_t^i > b_{t-1}^i \\
       v_t^{i,b} - v_{t-1}^{i,b}, & b_t^i = b_{t-1}^i \\
       -v_t^{i,b}, & b_t^i < b_{t-1}^i \\
 \end{array} 
-\right. $$
+\right.
+$$
 
-$$ \text{aOF}_{t,i} :=   \left\{
+$$
+\text{aOF}_{t,i} :=   \left\{
 \begin{array}{ll}
       -v_t^{i,a}, & a_t^i > a_{t-1}^i \\
       v_t^{i,a} - v_{t-1}^{i,a}, & a_t^i = a_{t-1}^i \\
       v_t^{i,a}, & a_t^i < a_{t-1}^i \\
 \end{array} 
-\right. $$
+\right.
+$$
 
 for $i = 1, ..., 10$. With this, we define *order flow* (OF)
 
-$$ \begin{equation*} \text{OF}_t :=  (\text{bOF}_{t,1}, \text{aOF}_{t,1}, ..., \text{bOF}_{t,10}, \text{aOF}_{t,10})^T \in \mathbb{R}^{20} \end{equation*} $$
+$$
+\text{OF}_t :=  (\text{bOF}_{t,1}, \text{aOF}_{t,1}, ..., \text{bOF}_{t,10}, \text{aOF}_{t,10})^T \in \mathbb{R}^{20}
+$$
 
 and *order flow imbalance* (OFI)
 
-$$ \begin{equation*} \text{OFI}_t := \text{bOF}_t - \text{aOF}_t \in \mathbb{R}^{10} \end{equation*} . $$
+$$
+\text{OFI}_t := \text{bOF}_t - \text{aOF}_t \in \mathbb{R}^{10}.
+$$
 
 While a sequence of limit order book states is a complex non-stationary process, the above formulas for order flow and order flow imbalance transform consecutive order book states into a stationary process. This property allows for our eventual test test of the deep learning model to be reasonably similar to the training set and thus appropriate to predict off of using the model. It also allows for more ease in the learning of long-term dependencies by our LSTM layer, which Kolm et al see as a reason behind their finding that sequence length only marginally impacted model performance[<sub>[4]</sub>](#ref4). On a separate note, when trained on order flow, which keeps the bid and ask sides separate, the CNN layers of our model will be given the added flexibility of being able to combine bid and ask order flows asymmetrically, so we expect that our forecasting model will perform better on order flow than on order flow imbalance.
 
@@ -96,13 +106,11 @@ $\mathcal{D}_{\text{train}}$, and estimated model parameters
 $\hat{w}$, we define predictive entropy by
 
 $$
-\begin{equation*}
-     \begin{aligned}
+\begin{aligned}
      \mathbb{H}(y_t \mid x_t,\mathcal{D}_{\text{train}}) &= -\sum_{j=-1}^1 p(y_t=j \mid x_t,\mathcal{D}_{\text{train}})\log p(y_t=j \mid x_t,\mathcal{D}_{\text{train}}) \\
     &\approx -\sum_{j=-1}^{1} \left( \frac{1}{100}\sum_{k=1}^{100} p(y_t=j \mid x_t,\hat w)\right) \log \left(\frac{1}{100}\sum_{k=1}^{100} p(y_t=j \mid x_t,\hat w)\right) \\
     &=: \tilde{\mathbb{H}}_t.
-    \end{aligned}
-\end{equation*}
+\end{aligned}
 $$
 
 Essentially, $ j$ iterates over each class and summarizes the average level of uncertainty for outcomes of that class. The function is minimized when the model is certain––when one class has probability 1 and all others are 0. The function is maximized when the model is very uncertain––probability is uniform across the classes. Also observe that our earlier notation $\hat p_{j,t}$ is shorthand for 
@@ -129,11 +137,15 @@ Now comes the question of how we should compare these strategies in terms of pro
 
 Since each strategy returns different transaction volumes, we standardize profits to properly compare profitability. And while the Sharpe ratio is a popular measure of risk in a portfolio or strategy, it deems large positive and negative returns to be equally risky, so we follow BDLOB[<sub>[2]</sub>](#ref2) in using the Downward Deviation ratio 
 
-$$\text{DDR} = \frac{\mathbb{E}(R_t)}{\text{DD}_T}$$ 
+$$
+\text{DDR} = \frac{\mathbb{E}(R_t)}{\text{DD}_T}
+$$
 
 as our risk measure, where $\mathbb{E}(R_t)$ is the average return per timestamp and 
 
-$$\text{DD}_T = \sqrt{\frac{1}{T} \sum_{t=1}^T \text{min}(R_t,0)^2}$$ 
+$$
+\text{DD}_T = \sqrt{\frac{1}{T} \sum_{t=1}^T \text{min}(R_t,0)^2}
+$$
 
 measures the deviation of negative returns. DDR has the desired property of penalizing negative returns and rewarding positive returns.
 
@@ -145,11 +157,15 @@ Proper downsampling would have been a nice add in our training procedure in orde
 
 # Model Diagnostics
 In acccordance with the Box-Jenkins approach, we test the fitted models' residuals 
-$\{ \hat{u}_i \}_{i=1}^T$ for any autocorrelation. If true, there is statistical evidence that the model is underfitting, and we should increase the lag parameter of our sequential model and re-train. If false, we accept the model residuals to be white noise. 
+$\{ \hat{u}_i \}_{i=1}^T$ for any autocorrelation. 
+If true, there is statistical evidence that the model is underfitting, and we should increase the lag parameter of our sequential model and re-train. 
+If false, we accept the model residuals to be white noise. 
 
 We compute our residuals as the cross-entropy of the classification problem at each timestamp, which we define by 
 
-$$\hat u_i=-\sum_{j=-1}^1y_i(j)\log\hat y_i(j)$$ 
+$$
+\hat u_i=-\sum_{j=-1}^1y_i(j)\log\hat y_i(j)
+$$
 
 for $ i \in \{1,...,T\}$, where 
 $y_i$ is the one-hot encoded 3-variable vector of the true 1-step movement, 
@@ -157,15 +173,19 @@ $\hat{y}_i$ is our model's unrounded prediction of that encoding, and
 $T$ is the number of observations.
 
 Letting 
-$\hat{\tau}_i$ be the sample autocorrelations of the residuals and $m$ to be a maximum lag to test, we use the Ljung-Box statistic
+$\hat{\tau}_i$ be the sample autocorrelations of the residuals and 
+$m$ to be a maximum lag to test, we use the Ljung-Box statistic
 
-$$ Q(m) = T(T+2)\sum_{l=1}^{m}\frac{\hat{\tau}_l^2}{T-l} $$
+$$
+Q(m) = T(T+2)\sum_{l=1}^{m}\frac{\hat{\tau}_l^2}{T-l}
+$$
 
 as our test statistic for the null hypothesis 
 $H_0: \tau_1=...=\tau_m=0$ versus the alternative 
 $H_a: \tau_i \neq 0$ for some 
 $i \in \{1,...,m\}$. 
-For large $T$, the statistic is chi-squared distributed with $m$ degrees of freedom, and we reject the null in favor of the alternative if the test statistic is greater than the critical value of the corresponding chi-squared distribution at the 99% confidence level. 
+For large $T$, the statistic is chi-squared distributed with 
+$m$ degrees of freedom, and we reject the null in favor of the alternative if the test statistic is greater than the critical value of the corresponding chi-squared distribution at the 99% confidence level. 
 
 We unfortunately found evidence supporting the conclusion that both models underfit the training data, so increasing the lag parameter and redoing the training and diagnostics until we no longer underfit would be a necessary next step, but we omit it for brevity. Also, Kolm et al[<sub>[4]</sub>](#ref4) found that different choices for the lag parameter had little impact on the performance of the CNN-LSTM model for their regression problem, so perhaps this is as good as we can get. And as a third point, the fact that the model is underfitting should come as no surprise, since this really tells us that our model is too simple for the data. Financial data, even such stationary processes as order flow and order flow imbalance, are incredibly complex, so it's hard to expect any interpretable model to well-fit the input data. In this truth lies one of the problems of deep learning in finance.
 
